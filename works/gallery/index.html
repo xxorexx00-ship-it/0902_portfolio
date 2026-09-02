@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KH2Z6L7K');</script>
+<!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="木幡博史のグラフィック作品集。Photoshop・Illustratorで制作。" />
+  <title>Art Gallery | Hiroshi's Story</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/animation.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+</head>
+<body class="site-active">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH2Z6L7K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="site is-active" id="site">
+
+    <!-- Nav -->
+    <header class="nav is-scrolled" id="nav" role="banner">
+      <div class="nav__inner container">
+        <a href="../../index.html" class="nav__logo" aria-label="トップへ戻る">H.</a>
+        <button class="nav__hamburger" id="navHamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav__menu" id="navMenu" role="navigation" aria-label="メインナビゲーション">
+          <ul class="nav__list">
+            <li><a href="../../index.html#works" class="nav__link">Works</a></li>
+            <li><a href="../../about/index.html" class="nav__link">About</a></li>
+            <li><a href="../../hobby/index.html" class="nav__link">Hobby</a></li>
+            <li><a href="../../index.html#skills" class="nav__link">Skills</a></li>
+            <li><a href="../../index.html#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+
+      <section class="preview-hero reveal">
+        <div class="container">
+          <p class="lp-back"><a href="../../index.html#works">&larr; Works に戻る</a></p>
+          <p class="preview-hero__category">Works</p>
+          <h1 class="preview-hero__title">Art Gallery</h1>
+          <p class="preview-hero__desc">PhotoshopおよびIllustratorで制作したグラフィック作品集です。</p>
+        </div>
+      </section>
+
+      <section class="art-gallery reveal">
+        <div class="container">
+          <div class="filter" id="galleryFilter" role="group" aria-label="ギャラリーフィルター">
+            <button class="filter__btn is-active" data-gallery-filter="all" aria-pressed="true">All</button>
+          </div>
+          <ul class="gallery-grid" id="galleryGrid" aria-label="アート作品一覧"></ul>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <p class="footer__copy">&copy; 2026 Hiroshi Kowata. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- トップへ戻る -->
+    <button class="back-to-top" id="backToTop" aria-label="トップへ戻る">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+  </div>
+
+  <!-- Gallery Modal -->
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="作品詳細">
+    <div class="gallery-modal__inner">
+      <button class="gallery-modal__close" aria-label="閉じる">&times;</button>
+      <div class="gallery-modal__left">
+        <img class="gallery-modal__img" src="" alt="" />
+      </div>
+      <div class="gallery-modal__right">
+        <p class="gallery-modal__tool"></p>
+        <h3 class="gallery-modal__title"></h3>
+        <p class="gallery-modal__desc"></p>
+        <div class="gallery-modal__nav">
+          <button class="gallery-modal__prev" aria-label="前の作品">&#8592; Prev</button>
+          <button class="gallery-modal__next" aria-label="次の作品">Next &#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/gallery-data.js"></script>
+  <script src="../../js/gallery.js"></script>
+  <script src="../../js/observer.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

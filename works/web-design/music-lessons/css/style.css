@@ -1,0 +1,705 @@
+@charset "UTF-8";
+
+*{
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+    /* 幅を指定した要素（タグ）にborder、paddingを設定した際に要素が広がってしまうことを防ぐため */
+}
+
+body {
+    font-family: "Kaushan Script", "Noto Sans JP", serif;
+    /* ここまでフォントファミリー googlefontからの英文と、日本語を設定 */
+    line-height: 1;
+    /* 行間のリセット */
+    color: #333;
+    /* サイト全体の文字色を定義しておく */
+}
+
+ul {
+    list-style: none;
+    /* liの装飾を削除する */
+}
+
+a {
+    text-decoration: none;
+    /* aタグの初期設定。aタグはでデフォルトで持っている下線を消しておく */
+}
+
+img{
+    max-width: 100%;
+    /* 親要素の大きさ以上大きくならず、かつ、自身の原寸大以上に大きくならない */
+    height: auto;
+    /* タグのほうでの高さ指定を調整 今のところ、あってもなくても-- Wordpressでは使うかも */
+    vertical-align: bottom;
+    /* imgは、文字と同等扱いなので、必ず下部に余白（デセンダー）が出来てしまうのを防ぐ。他の防ぐ方法としてインライン要素をブロック要素に変える方法もあり */
+}
+
+/*-----------------------------------------
+    pc max-setting   
+-----------------------------------------*/
+
+.container {
+    max-width: 1024px;
+    /* 最大値、1024px それ以下可変 max-width使用 */
+    margin: 0 auto;
+    padding: 40px 20px 20px;
+}
+
+.header_inner.container{
+    padding:0 10px;
+}
+
+.access .container {
+     max-width: none;
+    padding: 80px 10px 20px;
+}
+
+/*-----------------------------------------
+    html - smooth scroll setting   
+-----------------------------------------*/
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/*-----------------------------------------
+ header  header_inner - logo setting   
+-----------------------------------------*/
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+}
+
+.header_inner .logo p{
+    font-size: 13px;
+    text-align: right;
+}
+
+/*-----------------------------------------
+     header_inner nav setting   
+-----------------------------------------*/
+    
+.header_inner nav  ul{
+    display: flex;
+}
+
+.header_inner nav ul a{
+    display: block;
+    padding: 15px 30px;
+    color: #333;
+    font-weight: 400;
+    transition: .3s;
+} 
+
+.header_inner nav ul a:hover{
+    color: #ff4d0c;
+}
+
+/*-----------------------------------------
+    main_img - setting   
+-----------------------------------------*/
+
+.main_img{
+    padding-top: 100px;
+}
+
+.main_img p{
+    height: 70vh;
+}
+
+.main_img p img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/*-----------------------------------------
+    main - setting   
+-----------------------------------------*/
+
+/* ★要素を囲っていた不要な黒線（border）を削除しました */
+
+main h2{
+    font-size: 40px;
+    padding: 20px 0 60px;
+    font-weight: 400;
+    text-align: center;
+}
+
+main .message h2 span{
+    padding-top: 18px;
+}
+
+main h2 span{
+    display: block;
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+main h3{
+    font-size: 19px;
+    border-left: 4px solid #052e51;
+    padding:9px 6px;
+    margin-bottom: 10px;
+    background-color: #d2dbff;
+}
+
+/*-----------------------------------------
+    message - setting   
+-----------------------------------------*/
+
+ .message{
+    background-color: #fff;
+    margin-bottom: 20px;
+} 
+
+ .message::before{
+    content: none;
+ }
+
+/* 文章全体を包むエリアで全体の空気感をコントロール */
+.message_text_wrap {
+    max-width: 860px;
+    margin: 0 auto 80px; /* 下の写真との間の心地よい余白 */
+    text-align: center; /* 中央寄せにすることで、詩のようで行間がより引き立ちます */
+}
+
+.message p{
+    margin-bottom: 60px; /* 段落と段落の間のしっかりとした空気の余白 */
+}
+
+.message p:last-of-type{
+    margin-bottom: 0; /* 最後の段落の下マージンはリセット */
+}
+
+/* 各スパンの後ろで確実に改行（一呼吸）を入れる（PC用表示設定） */
+.message p span {
+    display: block; 
+    line-height: 2.4; /* 行間をかなりゆったり空けて、言葉の「間」を引き立てる */
+    letter-spacing: 0.08em; /* 文字の間隔を少し空けて、洗練された贅沢な余白感を出す */
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Noto Sans JP";
+}
+
+.message ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.message ul li{
+    width: 31%;
+    aspect-ratio: 5/4;
+}   
+
+.message ul li img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/*-----------------------------------------
+    lesson - setting   
+-----------------------------------------*/
+.lesson{
+    background-color: #fff;
+}
+.lesson .lesson_item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.lesson .lesson_item .photo{
+    width: 38%;
+    aspect-ratio: 5/3;
+}
+.lesson .lesson_item .photo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.lesson .lesson_item .text{
+    width: 55%;
+}
+
+.lesson .lesson_item .text p{
+     line-height: 1.8;
+     font-family: "Noto Sans JP";
+}
+
+/*-----------------------------------------
+    part_lineup - setting (解説付き科目紹介)
+-----------------------------------------*/
+.part_lineup {
+    background-color: #f7f9fc;
+}
+
+.part_grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px 2%;
+}
+
+.part_grid li {
+    width: 32%;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.part_icon {
+    width: 60px;
+    height: 60px;
+    background-color: #d2dbff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 15px;
+}
+
+.part_icon i {
+    font-size: 26px;
+    color: #052e51;
+}
+
+.part_grid li h3 {
+    font-size: 18px;
+    border-left: none;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 12px;
+    color: #052e51;
+    font-family: "Noto Sans JP";
+    font-weight: 700;
+}
+
+.part_grid li p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    font-family: "Noto Sans JP";
+}
+
+/*-----------------------------------------
+    parallax_bg - setting（PC・スマホ兼用最強パララックス）
+-----------------------------------------*/
+.parallax_bg {
+    height: 300px;
+    position: relative;
+    /* iOS含むすべてのスマホで100%確実にパララックスを効かせる最先端の設定 */
+    clip-path: inset(0 0 0 0);
+}
+
+.parallax_bg::before {
+    content: "";
+    position: fixed; /* 画面に対して画像を完全固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/bg_img.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* コンテンツの後ろに回り込ませる */
+}
+
+/*-----------------------------------------
+    voice - setting   
+-----------------------------------------*/
+
+.voice{
+    background-color: #fff;
+}
+
+.voice ul{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
+
+.voice li{
+    width:28%;
+} 
+
+.voice li .photo{
+    aspect-ratio: 1/1;
+    margin-bottom: 10px;
+}
+
+.voice li .photo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.voice li .text{
+    line-height: 1.8;
+    padding: 0 10px;
+}
+
+/*-----------------------------------------
+    Call to action - setting   
+-----------------------------------------*/
+
+.voice a,.lesson a{
+    display: block;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px 0;
+    background-color: #052e51;
+    color: #fff;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.voice a:hover,.lesson a:hover{
+    color: #222;   
+    background-color: #eee;  
+    border: 1px solid #052e51;
+}
+ 
+/*-----------------------------------------
+    access - setting   
+-----------------------------------------*/
+
+.access{
+    background-color: #fff;
+}
+
+.access iframe{
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    filter: grayscale(0.7);
+}
+
+.access p{
+    padding: 10px 0;
+    text-align: center;
+    font-weight:400;
+}    
+
+/*-----------------------------------------
+    qaa - setting   
+-----------------------------------------*/
+
+.qaa{
+    background-color: #fff;
+}
+
+.qaa dl dt{
+    padding: 20px;
+    color: #fff;
+    line-height: 1.5;
+    background-color: #052e51;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.qaa dl dt.active{
+    background-color: #ddd;
+    color: #333;
+}
+
+.qaa dl dd{
+    padding: 5px 20px;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    display: none;
+}
+
+/*-----------------------------------------
+    footer - setting   
+-----------------------------------------*/
+
+footer{
+    background-color: #052e51;
+}
+
+footer .footer_logo{
+    padding: 70px 0;
+    text-align: right;
+    font-size: 14px;
+    color: #fff;
+}
+
+footer .footer_logo p{
+    font-size: 13px;
+    font-family: "Noto Sans JP";
+}
+
+/*-----------------------------------------
+    fontawesome - setting トップに戻るボタン
+-----------------------------------------*/
+
+.topback{
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    background-color: #052e51;
+    color: #fff;
+    border: 1px solid #fff;
+    display: none;
+}
+
+.topback i{
+    width: 55px;
+    line-height: 50px;
+    font-size: 30px;
+}
+
+/*-----------------------------------------
+    call to action setting (ポップアップモーダル)
+------------------------------------------*/
+.bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(40, 40, 40, 0.5); 
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    transition: 0.6s;
+    text-align: center;
+}
+.bg.modal{
+    opacity: 1;
+    visibility: visible;
+}
+
+.bg .pr{
+    position: relative;
+    max-width: 600px;
+    padding: 40px 20px 80px;
+    background-color: #fff;
+}
+
+.bg h3{
+    font-size: 22px;
+    color: #ff4d0c;
+    text-align: center;
+}
+
+.bg .pr i{
+    position: absolute;
+    top:4px;
+    right:4px;
+    font-size: 30px;
+    line-height: 50px;
+    width: 50px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+
+.bg .pr .svg{
+    width: 70%;
+    margin: 10px auto 0;
+}
+
+.bg .pr .text{
+    padding:20px 10px ;
+    line-height: 1.7;
+    font-family: "Noto Sans JP";
+}
+
+.bg .pr .text strong {
+    color: #ff4d0c;
+    font-size: 17px;
+}
+
+.bg .pr_btn{
+    display: block;
+    width: 80%;
+    margin: 10px auto 0;
+    padding: 15px 10px;
+    text-align: center;
+    background-color: #052e51;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+}
+
+/*-----------------------------------------
+  メディアクエリ (レスポンシブ設定)
+-----------------------------------------*/
+@media (width<=768px){
+
+.header_inner .logo p{
+    text-align: left;
+    padding-left: 25px;
+}
+
+.header_inner nav{
+    position: fixed;
+    top: 100px;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: 0.3s;
+}
+
+.header_inner nav.drawer{
+    left: 0;
+}
+
+.header_inner nav ul{
+    display: block;
+}
+
+.header_inner nav ul a{ 
+    padding: 30px 0;
+    text-align: center;
+} 
+
+.main_img{
+    padding-top: 0;
+}
+
+/* スマホ時：メッセージ内のspanの強制改行をクリアして通常の流れにする */
+.message p span {
+    display: inline;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+}
+
+.message p{
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.message ul{
+    display: block;
+}
+
+.message ul li{
+    width: 100%;
+    margin-bottom: 40px;
+} 
+
+.voice ul{
+    display: block;
+}
+
+.voice li{
+    width:100%;
+    margin-bottom: 40px;
+} 
+
+.lesson .lesson_item{
+    display: block;
+}
+
+.lesson .lesson_item .photo{
+    width: 100%; 
+    margin-bottom: 5px; 
+ }
+ .lesson .lesson_item .text{
+    width: 100%; 
+ }
+
+/* スマホ時：科目の項目カードを2カラム（2列並び）にする */
+.part_grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 0;
+}
+
+.part_grid li {
+    width: 48%; 
+    margin-bottom: 0;
+    padding: 20px 10px;
+}
+
+.part_grid li h3 {
+    font-size: 16px;
+}
+
+.part_grid li p {
+    font-size: 13px;
+}
+
+/* スマホ用のパララックス高さを微調整 */
+.parallax_bg {
+    height: 200px; 
+}
+
+footer .footer_logo{
+    text-align: center;
+}
+
+.burger{
+    position: fixed;
+    width: 60px;
+    height: 50px;
+    top: 25px;
+    right: 10px;
+    background-color: #fff;
+    z-index: 100;
+}
+.burger span{
+    position: absolute;
+    width: 80%;
+    height: 4px;
+    background-color: #333;
+    inset: 0;
+    margin: auto;
+    transition: 0.3s;
+}
+
+.burger span:nth-of-type(1){
+    top: -35%;
+}
+.burger span:nth-of-type(3){
+    top: 35%;
+    transition-delay: 0.1s;
+}
+
+.burger.active span:nth-of-type(1){
+    top: 0;
+}
+
+.burger.active span:nth-of-type(3){
+    top: 0;
+}
+
+.footer_inner p{
+    text-align: center;
+}
+
+}/* media end */

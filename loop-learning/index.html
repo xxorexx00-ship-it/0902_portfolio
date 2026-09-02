@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KH2Z6L7K');</script>
+<!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Loop Learning — HTML/CSS/jQueryの写経学習コンソール。挫折ゼロを目指した設計思想と機能紹介。" />
+  <title>Loop Learning | Hiroshi's Story</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animation.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body class="site-active">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH2Z6L7K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="site is-active" id="site">
+
+    <!-- Nav -->
+    <header class="nav is-scrolled" id="nav" role="banner">
+      <div class="nav__inner container">
+        <a href="../index.html" class="nav__logo" aria-label="トップへ戻る">H.</a>
+        <button class="nav__hamburger" id="navHamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav__menu" id="navMenu" role="navigation" aria-label="メインナビゲーション">
+          <ul class="nav__list">
+            <li><a href="../index.html#works" class="nav__link">Works</a></li>
+            <li><a href="../about/index.html" class="nav__link">About</a></li>
+            <li><a href="../index.html#skills" class="nav__link">Skills</a></li>
+            <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+
+      <!-- Hero -->
+      <section class="lp-hero reveal">
+        <div class="container">
+          <div class="lp-hero__inner">
+            <p class="lp-back"><a href="../index.html#works">&larr; Works に戻る</a></p>
+            <p class="lp-hero__category">Python / AI / Notion</p>
+            <h1 class="lp-hero__title">Loop Learning</h1>
+            <p class="lp-hero__lead">HTML/CSS/jQueryの学習者が「最も効率よく、ストレスフリーに自習できる環境」を極限まで追求した、ひと画面完結型のeラーニングシステム。</p>
+            <div class="lp-hero__tags">
+              <span class="work-card__tag">Python</span>
+              <span class="work-card__tag">AI</span>
+              <span class="work-card__tag">Notion</span>
+              <span class="work-card__tag">HTML/CSS</span>
+              <span class="work-card__tag">jQuery</span>
+            </div>
+            <div class="lp-hero__status">
+              <span class="lp-status-badge">コア機能（写経ミッション）実装済み</span>
+              <span class="lp-status-badge lp-status-badge--wip">随時ブラッシュアップ中</span>
+            </div>
+            <div class="lp-hero__cta">
+              <a
+                href="https://loop-training.onrender.com/"
+                class="btn btn--primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Loop Learningを開く（新しいタブ）"
+              >Preview →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 概要 -->
+      <section class="lp-section reveal">
+        <div class="container">
+          <div class="lp-section__header">
+            <h2 class="lp-section__title">このツールが解決すること</h2>
+          </div>
+          <div class="lp-overview__grid">
+            <div class="lp-overview__item">
+              <p class="lp-overview__icon">🎯</p>
+              <h3 class="lp-overview__heading">挫折ゼロ</h3>
+              <p class="lp-overview__text">コードを書く人の心理と行動を計算し尽くした優しさと直感的な操作性（UX）で、学習の離脱を防ぐ。</p>
+            </div>
+            <div class="lp-overview__item">
+              <p class="lp-overview__icon">🔁</p>
+              <h3 class="lp-overview__heading">スモールステップ</h3>
+              <p class="lp-overview__text">小さな階段を確実に登る設計。反復練習を軸に、スキルを脳に確実に定着させる。</p>
+            </div>
+            <div class="lp-overview__item">
+              <p class="lp-overview__icon">⚡</p>
+              <h3 class="lp-overview__heading">実務レベルの体感</h3>
+              <p class="lp-overview__text">Emmet対応で、プロが現場で使う爆速コーディングのテンポを初期段階から身体に染み込ませる。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 視線誘導：白銀比（1.414:1）・テキスト主役・左寄り -->
+      <section class="lp-section-image-wrap">
+        <div class="container">
+          <div class="content-split content-split--reverse" style="grid-template-columns: 1.414fr 1fr;">
+            <div class="content-split__media">
+              <img src="../images/assets/loop01.webp" alt="" loading="lazy" />
+            </div>
+            <div class="content-split__text">
+              <p class="content-split__eyebrow">Why It Works</p>
+              <h3 class="content-split__title">「読む」から「使う」への橋渡し</h3>
+              <p class="content-split__desc">機能の一覧を眺めるだけでなく、実際の画面でどう動くのかをイメージしながら読み進められるよう、要所ごとに操作画面を挟んでいます。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 機能詳細 -->
+      <section class="lp-section lp-section--alt reveal">
+        <div class="container">
+          <div class="lp-section__header">
+            <h2 class="lp-section__title">写経ミッションの設計思想</h2>
+            <p class="lp-section__sub">ただのタイピング練習で終わらせないために。7つのこだわり。</p>
+          </div>
+          <div class="lp-features">
+
+            <div class="lp-feature reveal">
+              <div class="lp-feature__num">01</div>
+              <div class="lp-feature__body">
+                <h3 class="lp-feature__title">常にゴールが見える「お手本クリック連動」</h3>
+                <p class="lp-feature__text">お手本をクリックするだけで、そのコードの完成図がパッと表示される。目指すべきゴールをいつでも視覚的に確認でき、ワクワク感を保ちながら迷わず進められる。</p>
+              </div>
+            </div>
+
+            <div class="lp-feature reveal">
+              <div class="lp-feature__num">02</div>
+              <div class="lp-feature__body">
+                <h3 class="lp-feature__title">迷子防止の「お手本常時表示」</h3>
+                <p class="lp-feature__text">写経ミッションのすぐそばに常に正しいお手本が配置される。視線の近くに「正解」があるため、集中力を1ミリも切らさずタイピングに没頭できる。</p>
+              </div>
+            </div>
+
+            <div class="lp-feature reveal">
+              <div class="lp-feature__num">03</div>
+              <div class="lp-feature__body">
+                <h3 class="lp-feature__title">脳の理解を置き去りにしない「プレビュー知覚遅延」</h3>
+                <p class="lp-feature__text">変更の反映をあえて絶妙な速度に遅延。「自分が打ったこの1行で画面のここが動いた」という因果関係を、視覚的にしっかり納得しながら学習できる。</p>
+              </div>
+            </div>
+
+            <div class="lp-feature reveal">
+              <div class="lp-feature__num">04</div>
+              <div class="lp-feature__body">
+                <h3 class="lp-feature__title">集中力を削がない「ノンフリッカーナビゲーション」</h3>
+                <p class="lp-feature__text">ナビゲーションのサイズを徹底計算し、どんな操作をしても画面がちらつかない・ガタつかない設計。ノイズを排除した没頭できる画面構成。</p>
+              </div>
+            </div>
+
+            <!-- 視線誘導：青銅比（1.302:1）・画像主役・左寄り -->
+            <div class="content-split" style="grid-template-columns: 1.302fr 1fr;">
+              <div class="content-split__media">
+                <img src="../images/assets/loop02.webp" alt="" loading="lazy" />
+              </div>
+              <div class="content-split__text">
+                <p class="content-split__eyebrow">In Practice</p>
+                <h3 class="content-split__title">細部にこそ、学習体験が宿る</h3>
+                <p class="content-split__desc">エディタの動的な色の変化や、待ち時間を学びに変えるTips表示など、小さな工夫の積み重ねが挫折しない体験をつくっています。</p>
+              </div>
+            </div>
+
+            <div class="lp-feature reveal">
+              <div class="lp-feature__num">05</div>
+              <div class="lp-feature__body">
+                <h3 class="lp-feature__title">実務のスピード感を体感させる「Emmet対応」</h3>
+                <p class="lp-feature__text">プロの現場で必須のEmmetに対応。実際のエンジニアと同じ効率的なコーディングのテンポを、初期段階から身体に染み込ませる。</p>
+              </div>
+            </div>
+
+            <div class="lp-feature reveal">
+              <div class="lp-feature__num">06</div>
+              <div class="lp-feature__body">
+                <h3 class="lp-feature__title">領域を五感で掴む「エディタの動的ビジュアル演出」</h3>
+                <p class="lp-feature__text">JavaScriptを実行した際、エディタの枠線やテキストカラーが動的に変化。今自分がどのコードの領域を操作しているかを、視覚的に直感で理解できる。</p>
+              </div>
+            </div>
+
+            <div class="lp-feature reveal">
+              <div class="lp-feature__num">07</div>
+              <div class="lp-feature__body">
+                <h3 class="lp-feature__title">待ち時間を学びに変える「インテリジェントTips」</h3>
+                <p class="lp-feature__text">ミッション生成時のローディング中にWeb制作の豆知識がリアルタイムで切り替わり表示。「待たされるストレス」を「新しい発見のワクワク」へ転換する。</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 今後の展望 -->
+      <section class="lp-section reveal">
+        <div class="container">
+          <div class="lp-section__header">
+            <h2 class="lp-section__title">今後の展望</h2>
+          </div>
+          <p class="lp-roadmap__text">現在クリアできている「写経ミッション」をベースに、ユーザーの習得レベルや進捗度をシステムが認識し、自動でお題の難易度を動的に変えていく機能の搭載を予定。初心者には手厚いサポートを、慣れてきた人にはより実践的な負荷をかける、一人ひとりに完全に最適化された「究極の自習コンソール」へと成長させていく。</p>
+        </div>
+      </section>
+
+      <!-- API注記 + CTA -->
+      <section class="lp-cta reveal">
+        <div class="container">
+          <div class="lp-cta__inner">
+            <h2 class="lp-cta__title">ツールを試してみる</h2>
+            <p class="lp-cta__lead">コア機能（写経ミッション）は現在稼働中です。</p>
+            <a
+              href="https://loop-training.onrender.com/"
+              class="btn btn--primary lp-cta__btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Loop Learningを開く（新しいタブ）"
+            >Loop Learning を開く &rarr;</a>
+            <div class="lp-notice">
+              <p class="lp-notice__text">⚠️ 本ツールはAI APIの利用上限を設けています。上限に達した場合はAPIエラーが表示されることがあります。ご覧になりたい場合や面接時にご確認いただく際は、事前に一報いただければ上限を解放いたします。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer（ナビなし） -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <p class="footer__copy">&copy; 2026 Hiroshi Kowata. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- トップへ戻る -->
+    <button class="back-to-top" id="backToTop" aria-label="トップへ戻る">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+  </div>
+
+  <script src="../js/observer.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

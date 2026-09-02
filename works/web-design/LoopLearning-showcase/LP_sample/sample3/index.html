@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARCHIVE - 丁寧な暮らしを紡ぐ衣服と道具</title>
+  
+  <style>
+    /* ==========================================================================
+       【超重要】コンテナクエリの起点設定
+       この「.preview-wrapper」がプレビューの仕切り枠になります。
+       親サイトに埋め込む際は、このコード全体を囲むか、bodyごと基準にします。
+       ========================================================================== */
+    body {
+      container-type: inline-size;
+      container-name: preview;
+      
+      /* 以下はベース設定 */
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      color: #2b2b2b;
+      background-color: #fcfbfa;
+      line-height: 1.7;
+      letter-spacing: 0.05em;
+      margin: 0;
+      padding: 0;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* ==========================================================================
+       Header Layout
+       ========================================================================== */
+    .header {
+      /* 枠内固定にするため、position: fixed から absolute に変更 */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 20px 4%;
+      background-color: rgba(252, 251, 250, 0.85);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eae7e2;
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+    }
+
+    .nav-list {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero {
+      padding: 140px 4% 40px 4%;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 1.6rem; /* 小さな枠内でも綺麗に見えるよう初期値を調整 */
+      font-weight: 400;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .hero p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* ==========================================================================
+       EC Grid Collection
+       ========================================================================== */
+    .collection {
+      padding: 0 4% 80px 4%;
+    }
+
+    .collection-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px 20px;
+    }
+
+    .product-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-img-box {
+      width: 100%;
+      background-color: #f2f0eb;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .product-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: #ffffff;
+      padding: 3px 8px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+    }
+
+    .product-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.8rem;
+    }
+
+    .product-name {
+      font-weight: 400;
+    }
+
+    .product-price {
+      color: #777;
+    }
+
+    .product-category {
+      font-size: 0.7rem;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .ratio-square { aspect-ratio: 1 / 1; }
+    .ratio-portrait { aspect-ratio: 3 / 4; }
+    .ratio-landscape { aspect-ratio: 16 / 10; }
+
+    /* ==========================================================================
+       Footer
+       ========================================================================== */
+    .footer {
+      background-color: #f2f0eb;
+      padding: 40px 4%;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #888;
+      border-top: 1px solid #eae7e2;
+    }
+
+    /* ==========================================================================
+       【修正】Container Queries (枠の幅に基づいたレスポンシブ)
+       画面幅ではなく、「プレビュー枠の横幅が550px以上」になったらPCレイアウトにします
+       ========================================================================== */
+    @container preview (min-width: 550px) {
+      .hero h1 { font-size: 2.4rem; }
+
+      .shop-grid {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 60px 32px;
+      }
+      
+      .item-1 { grid-column: span 5; }
+      .item-2 { grid-column: 7 / span 5; margin-top: 80px; }
+      .item-3 { grid-column: 2 / span 10; margin: 40px 0; }
+      .item-4 { grid-column: span 4; }
+      .item-5 { grid-column: 5 / span 4; }
+      .item-6 { grid-column: 9 / span 4; margin-top: -60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- スリムなECナビゲーション -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="brand-logo">ARCHIVE</a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#">Store</a></li>
+          <li><a href="#">Cart (0)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>日常を静かに彩る、衣服と道具。</h1>
+        <p>長い時間をともに過ごすことができる、普遍的な美しさと機能性。</p>
+      </div>
+    </section>
+
+    <section class="collection">
+      <div class="collection-inner">
+        <div class="shop-grid">
+
+          <!-- 商品1 -->
+          <a href="#" class="product-item item-1">
+            <div class="product-img-box ratio-portrait">
+              <span class="product-tag">NEW</span>
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Linen Summer Coat">
+            </div>
+            <div class="product-info">
+              <span class="product-name">Linen Coat</span>
+              <span class="product-price">¥38,000</span>
+            </div>
+            <span class="product-category">Outerwear</span>
+          </a>
+
+          <!-- 商品2 -->
+          <a href="#" class="product-item item-2">
+            <div class="product-img-box ratio-portrait">
+              <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80" alt="Organic Cotton Knit">
+            </div>
+            <div class="product-info">
+              <span class="product-name">Cotton Knit</span>
+              <span class="product-price">¥24,000</span>
+            </div>
+            <span class="product-category">Tops</span>
+          </a>
+
+          <!-- 商品3 -->
+          <a href="#" class="product-item item-3">
+            <div class="product-img-box ratio-landscape">
+              <span class="product-tag">ESSENTIALS</span>
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80" alt="Our Atelier Collection">
+            </div>
+            <div class="product-info">
+              <span class="product-name">Atelier Tools Series</span>
+              <span class="product-price">View All</span>
+            </div>
+            <span class="product-category">Feature</span>
+          </a>
+
+          <!-- 商品4 -->
+          <a href="#" class="product-item item-4">
+            <div class="product-img-box ratio-square">
+              <img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=800&q=80" alt="Clay Ceramic Vase">
+            </div>
+            <div class="product-info">
+              <span class="product-name">Ceramic Vase</span>
+              <span class="product-price">¥8,500</span>
+            </div>
+            <span class="product-category">Utensils</span>
+          </a>
+
+          <!-- 商品5 -->
+          <a href="#" class="product-item item-5">
+            <div class="product-img-box ratio-square">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Walnut Wood Tray">
+            </div>
+            <div class="product-info">
+              <span class="product-name">Wood Tray</span>
+              <span class="product-price">¥12,000</span>
+            </div>
+            <span class="product-category">Utensils</span>
+          </a>
+
+          <!-- 商品6 -->
+          <a href="#" class="product-item item-6">
+            <div class="product-img-box ratio-portrait">
+              <span class="product-tag">LIMITED</span>
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Canvas Daily Tote">
+            </div>
+            <div class="product-info">
+              <span class="product-name">Canvas Tote</span>
+              <span class="product-price">¥16,500</span>
+            </div>
+            <span class="product-category">Bag</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 ARCHIVE.</p>
+  </footer>
+
+</body>
+</html>

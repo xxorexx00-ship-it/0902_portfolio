@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アノテーション作業の効率化とコスト削減に関する思考プロセス</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <style>
+    :root {
+      --bg: #f5f4ef;
+      --surface: #fffefa;
+      --surface-2: #eef2ec;
+      --ink: #18231d;
+      --muted: #66716a;
+      --green: #173d2c;
+      --green-2: #285b44;
+      --line: #d8ded8;
+      --accent: #d46d22;
+      --accent-soft: #f5e6da;
+      --shadow: 0 18px 55px rgba(23,61,44,.09);
+      --radius: 18px;
+      --title: 'Shippori Mincho', serif;
+      --body: 'Zen Kaku Gothic New', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 12% 8%, rgba(212,109,34,.06), transparent 26rem),
+        radial-gradient(circle at 90% 16%, rgba(40,91,68,.07), transparent 30rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--green); color: white; }
+    .icon {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 1.25rem;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(23,61,44,.94);
+      color: #fff;
+      padding: .75rem max(1.2rem, calc((100vw - 1180px)/2));
+      font-size: .82rem;
+      letter-spacing: .03em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(255,255,255,.08);
+    }
+    .nav-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.14);
+      padding: .3rem .7rem;
+      border-radius: 999px;
+      font-size: .76rem;
+    }
+
+    .header-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fffefa 0%, #f3f6f0 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 5.5rem 1.5rem 5rem;
+    }
+    .hero-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-purpose-box {
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.6rem;
+      font-size: .86rem;
+      color: var(--green);
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      box-shadow: 0 8px 30px rgba(23,61,44,.04);
+    }
+    .hero-title {
+      font-family: var(--title);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.28;
+      letter-spacing: -.025em;
+      color: var(--green);
+      margin-bottom: 1.25rem;
+    }
+    .hero-lead {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 700px;
+      margin-bottom: 1.7rem;
+    }
+    .tech-stack-group { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .76rem;
+      font-weight: 700;
+      background: var(--surface);
+      color: var(--green);
+      padding: .38rem .72rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .preview-box {
+      background: rgba(255,255,255,.9);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .hero-image-container {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #e4ece5;
+      border-radius: 12px;
+      border: 2px dashed #b2c2b5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-image-caption {
+      margin-top: .8rem;
+      padding: .6rem .8rem;
+      background: var(--surface-2);
+      border-radius: 8px;
+      font-size: .8rem;
+      color: var(--green);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .process-strip {
+      max-width: 1180px;
+      margin: -1.7rem auto 0;
+      position: relative;
+      z-index: 5;
+      padding: 0 1.5rem;
+    }
+    .process-inner {
+      background: var(--green);
+      color: #fff;
+      border-radius: 18px;
+      padding: 1.1rem 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .5rem;
+      box-shadow: 0 20px 45px rgba(23,61,44,.18);
+    }
+    .process-step {
+      padding: .55rem 1rem;
+      border-right: 1px solid rgba(255,255,255,.16);
+      font-size: .78rem;
+    }
+    .process-step:last-child { border-right: 0; }
+    .process-step strong {
+      display: block;
+      color: #fff;
+      margin-bottom: .15rem;
+    }
+    .process-step span { color: rgba(255,255,255,.62); }
+
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 4rem;
+    }
+    .section-card {
+      background: rgba(255,254,250,.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(1.6rem, 4vw, 3.1rem);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 32px rgba(23,61,44,.045);
+    }
+    .section-card:hover {
+      box-shadow: var(--shadow);
+      border-color: #c6d1c8;
+      transform: translateY(-2px);
+      transition: .25s ease;
+    }
+    .section-header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1rem;
+      margin-bottom: 1.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+    }
+    .section-num {
+      font-size: .75rem;
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: .12em;
+      padding-top: .3rem;
+    }
+    .section-h2 {
+      font-family: var(--title);
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      line-height: 1.55;
+      color: var(--ink);
+    }
+    .sub-h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--green-2);
+      margin: 1.6rem 0 .8rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    p { margin-bottom: 1.15rem; color: #344139; font-size: .96rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .code-block {
+      background: #17211c;
+      color: #dce9df;
+      padding: 1.35rem;
+      border-radius: 12px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .8rem;
+      line-height: 1.65;
+      overflow-x: auto;
+      margin: 1.3rem 0;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .callout-story {
+      background: linear-gradient(135deg, var(--accent-soft), #fff9f4);
+      border: 1px solid #e9cbb8;
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 0 14px 14px 0;
+      margin: 1.5rem 0;
+    }
+
+    .prototype-note {
+      margin: 0 0 1.5rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .prototype-note strong {
+      display: block;
+      color: var(--green);
+      margin-bottom: .35rem;
+    }
+    .prototype-note p { margin: 0; font-size: .9rem; }
+
+    .work-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.8rem 0 0;
+    }
+    .work-item {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+    .work-image {
+      aspect-ratio: 4 / 3;
+      background: #e9eee9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: .82rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .work-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: fixed;
+      display: block;
+    }
+    .work-image.placeholder::before {
+      content: "画像を配置";
+      border: 1px dashed #aebbb1;
+      padding: .45rem .7rem;
+      border-radius: 8px;
+      color: #77837b;
+    }
+    .work-copy {
+      padding: 1rem 1.05rem 1.1rem;
+    }
+    .work-copy h4 {
+      font-size: .95rem;
+      color: var(--green);
+      margin-bottom: .35rem;
+    }
+    .work-copy p {
+      font-size: .82rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .prototype-status {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      margin-top: 1rem;
+      padding: .45rem .75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid #e9cbb8;
+      color: #8c4319;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--muted);
+      font-size: .78rem;
+      border-top: 1px solid var(--line);
+      background: rgba(255,254,250,.8);
+    }
+
+    @media (max-width: 900px) {
+      .hero-container { grid-template-columns: 1fr; gap: 2.5rem; }
+      .process-inner { grid-template-columns: 1fr 1fr; }
+      .process-step:nth-child(2) { border-right: 0; }
+      .work-gallery { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-bar { position: static; }
+      .nav-tag { display: none; }
+      .header-hero { padding: 3.8rem 1rem 4rem; }
+      .main-container { padding: 3.5rem 1rem; }
+      .process-strip { padding: 0 1rem; }
+      .process-inner { grid-template-columns: 1fr; }
+      .process-step { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+      .process-step:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ナビゲーションバー -->
+  <nav class="nav-bar">
+    <span>アノテーション効率化と課題解決の思考プロセス</span>
+    <span class="nav-tag">
+      <span class="icon">code</span> Python / Flask / YOLOv8x-seg
+    </span>
+  </nav>
+
+  <!-- ヘッダーエリア -->
+  <header class="header-hero">
+    <div class="hero-container">
+      <div>
+        <div class="page-purpose-box">
+          <span class="icon" style="color: var(--primary); margin-top: 0.1rem;">info</span>
+          <div>
+            <strong>【概要と背景】</strong><br>
+            現場で発生している手作業（人海戦術）の課題に着目し、約3時間で実際に動作するプロトタイプを制作・検証。その後のヒアリングで「すでに同様の仕組みが存在する」と判明した点も含め、コスト削減と浮いた時間の活用に関する思考プロセスを整理しました。
+          </div>
+        </div>
+
+        <h1 class="hero-title">課題の気づきからプロトタイプ検証、<br>そして削減コストの活用へ</h1>
+        <p class="hero-lead">
+          現場課題の把握から自作ツールでの改善案を形にし、運用の実情を経て見えた「既存仕組みの先にある時間とコストの再投資計画」。
+        </p>
+
+        <div style="font-size:.76rem; font-weight:800; color:var(--muted); margin-bottom:.55rem;">使用ツール・技術</div>
+        <div class="tech-stack-group">
+          <span class="tech-badge"><span class="icon">terminal</span> Python（処理制御）</span>
+          <span class="tech-badge"><span class="icon">image</span> YOLOv8x-seg（座標抽出）</span>
+          <span class="tech-badge"><span class="icon">sync_alt</span> 既存システムとの連携想定</span>
+        </div>
+        <div class="prototype-status">
+          <span class="icon" style="font-size:1rem;">construction</span>
+          製作時間：約3時間 / 検証用プロトタイプ制作完了
+        </div>
+      </div>
+
+      <!-- 右側：画像配置エリア -->
+      <div class="preview-box">
+        <div class="hero-image-container">
+
+          <img src="img/hero-preview.webp" alt="プロトタイプUI">
+        </div>
+        <div class="hero-image-caption">
+          <span class="icon" style="font-size:1rem;">alt_route</span>
+          現場課題の把握 ➔ ツール試作 ➔ 実情の確認 ➔ 運用の展望
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="process-strip" aria-label="思考のプロセス">
+    <div class="process-inner">
+      <div class="process-step"><strong>01 気づき</strong><span>現場の課題感を把握</span></div>
+      <div class="process-step"><strong>02 試作・仮説</strong><span>3時間でプロトタイプを制作</span></div>
+      <div class="process-step"><strong>03 検証</strong><span>処理プロセスをプロトタイプで確認</span></div>
+      <div class="process-step"><strong>04 確認とその先</strong><span>運用実情の確認と時間・コストの再投資</span></div>
+    </div>
+  </div>
+
+  <main class="main-container">
+
+    <!-- 第1章 -->
+    <article class="section-card">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-h2">課題の気づき：人海戦術による「時間とコストの肥大化」</h2>
+      </div>
+
+      <h3 class="sub-h3">
+        <span class="icon">payments</span>
+        現場の課題感
+      </h3>
+      <p>
+        アノテーション作業の現場では、ひたすら人の手でアンカーポイントを打ち込んでラベリングを行っているケースが散見されます。
+      </p>
+      <p>
+        この作業の最大の問題は、現場の作業的な負担だけでなく、膨大な枚数に比例して**時間と人件費（コスト）が跳ね上がり続ける点**にあります。ゼロからアンカーを打ち続ける運用は、コスト面で大きな課題であると感じました。
+      </p>
+    </article>
+
+    <!-- 第2章 -->
+    <article class="section-card">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-h2">自分なりの仮説とアプローチ：簡易ツールの即座なプロトタイピング</h2>
+      </div>
+
+      <h3 class="sub-h3">
+        <span class="icon">bolt</span>
+        約3時間で製作した自動化プロトタイプ
+      </h3>
+      <p>
+        大掛かりなシステムを一から組むのではなく、YOLOv8x-segなどで初期領域を自動判定し、抽出した座標データをそのまま既存システムへ流し込む**簡易プロトタイプ（所要時間：約3時間）**を制作・検証しました。
+      </p>
+
+      <div class="code-block">
+// 抽出・生成される座標データのイメージ（既存システムへコピペ・流し込み）
+[
+  {
+    "label": "pig",
+    "points": [
+      [124, 310],
+      [150, 305],
+      [180, 420],
+      [110, 440]
+    ]
+  }
+]
+      </div>
+
+      <p>
+        手作業でアンカーを置く手間をなくし、座標を既存システムに直接渡すことで作業時間を劇的に削減し、コストカットを実現できるのではないかという仮説を立てました。
+      </p>
+    </article>
+
+    <!-- 第3章 -->
+    <article class="section-card">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-h2">プロトタイプで確認した処理の流れ</h2>
+      </div>
+
+      <p>
+        実際の既存システムを確認できていないため、連携部分の詳細までは設計していません。
+        今回は「画像を入れる → 対象を切り抜く → 座標情報として扱える形にする」という、
+        効率化の核となる部分をプロトタイプとして確認するところまでを制作範囲としました。
+      </p>
+
+      <div class="work-gallery">
+        <div class="work-item">
+          <div class="work-image"><img src="img/work01.webp" alt=""></div>
+          <div class="work-copy">
+            <h4>画像ファイルをドロップ</h4>
+            <p>対象画像をツールへ入れる入口。実際の運用を想定し、ファイルをドラッグ＆ドロップする操作を想定しています。</p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-image"><img src="img/work02.webp" alt=""></div>
+          <div class="work-copy">
+            <h4>生成された切り抜き画像</h4>
+            <p>対象領域を自動判定し、切り抜いた結果。人がゼロから対象範囲を指定する作業を減らすことを狙っています。</p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <div class="work-image"><img src="img/work03.webp" alt=""></div>
+          <div class="work-copy">
+            <h4>座標として出力</h4>
+            <p>判定した領域を座標情報として出力。既存システムへ渡すことを想定したデータの形を確認しています。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prototype-note" style="margin-top: 1.5rem;">
+        <strong>ここまでを今回の制作範囲としました</strong>
+        <p>
+          既存システムの実物や入出力仕様を確認していないため、残りの部分を具体的に実装することはできませんでした。
+          また、実運用では自動生成された領域を人が確認し、必要に応じて手作業で修正する機能も必要になると考えています。
+          今回はそこまでの必要性を把握した上で、プロトタイプとしてここまでを制作して終了としています。
+        </p>
+      </div>
+    </article>
+
+    <!-- 第4章 -->
+    <article class="section-card">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-h2">運用実情の確認と、コスト削減の「その先」にある仮説</h2>
+      </div>
+
+      <h3 class="sub-h3">
+        <span class="icon">fact_check</span>
+        実情の把握
+      </h3>
+      <p>
+        その後、現場の実情について詳しく確認を進める中で、<strong>「すでにそのような自動化・座標流し込みの仕組みが存在している」</strong>という事実を把握いたしました。
+      </p>
+
+      <h3 class="sub-h3">
+        <span class="icon">trending_up</span>
+        コスト削減と時間の使い道に関する展望（仮説）
+      </h3>
+      <p>
+        既存の仕組みによって人件費や作業時間が大幅に削れることを前提とした上で、さらに一歩進んで「その削減されたコストと時間で何を起こすか」という点について以下のように考えています。
+      </p>
+
+      <div class="callout-story">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span class="icon">work</span> 浮いた時間を新しい案件・事業へ再投資する展開
+        </h3>
+        <p style="font-size: 0.95rem;">
+          単にコストを削って人員を減らすだけでは、現場で働く作業者の方々の雇用や環境を守ることが難しくなります。
+        </p>
+        <p style="font-size: 0.95rem; margin-top: 0.5rem;">
+          自動化で浮いた時間とリソースを活用し、「別の品種や別案件のアノテーション作業」を新たに立ち上げるなど、削減した時間とリソースを次の仕事へ再投資することで、単なるコスト削減を事業の成長と雇用の継続につなげられるのではないかと考えています。
+        </p>
+      </div>
+    </article>
+
+    <!-- 第5章：実務稼働を見据えた拡張課題 -->
+    <article class="section-card">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-h2">実務稼働を見据えた拡張課題：手修正UIとDBによる再学習</h2>
+      </div>
+
+      <h3 class="sub-h3">
+        <span class="icon">edit_note</span>
+        1. 「人間が微修正できるUI」の必要性
+      </h3>
+      <p>
+        AIによる完全な自動化は難しいため、実際の運用では**「AIが9割自動生成し、人間がズレたアンカー（数点）だけを補正する」**インターフェースが必須となります。ゼロから描くのではなく「修正するだけ」にすることで作業効率を極限まで高めます。
+      </p>
+
+      <h3 class="sub-h3">
+        <span class="icon">database</span>
+        2. データベース（MySQL等）への正解データ蓄積
+      </h3>
+      <p>
+        画像パス・AI出力座標・作業者が修正した「最終正解座標」を MySQL などのデータベースに蓄積・管理します。
+      </p>
+
+      <h3 class="sub-h3">
+        <span class="icon">autorenew</span>
+        3. フィードバックループ（再学習）による精度向上
+      </h3>
+      <p>
+        DBに修正データが一定数溜まった段階でAIモデルの再学習（ファインチューニング）を実行します。現場の撮影環境に合わせた学習を繰り返すことで自動くり抜きの精度が段階的に上がり、**使えば使うほど人間の修正手間がゼロに近づいていく循環システム**を構築できます。
+      </p>
+
+      <div class="callout-story">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
+          <span class="icon">psychology</span> プロトタイプ制作を通して得た「設計視点」の気づき
+        </h3>
+        <p style="font-size: 0.95rem;">
+          当初は「単体画像からのくり抜きと座標抽出」という推論機能の検証にとどまっていました。しかし実務で必要なのは、業務の中で集まる豚の画像データをDBへ自動蓄積しつつ、日々の作業の中で微修正したデータをそのまま正確な教師データ（ラベリング）として同時に完成させていく一連の設計でした。このデータ収集とラベリングを同時進行で回すシステム全体の構造を、最初の段階で描ききれなかった点に自身の設計における甘さを感じました。
+        </p>
+        <p style="font-size: 0.95rem; margin-top: 0.5rem;">
+          単にAIモデルを動かすだけでなく、「現場の作業の中でデータを溜めつつラベリングを同時に終わらせるUI/DB構造」と「そのデータで再学習を回す循環機能」までをセットで設計して初めて『実務で稼働するシステム』になるという本質を学べたことは、今後の開発における大きな強みになると捉えています。
+        </p>
+      </div>
+    </article>
+
+    <!-- 第6章：まとめ -->
+    <article class="section-card">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-h2">まとめ</h2>
+      </div>
+
+      <p>
+        現場の課題感に対する疑問点から自身でプロトタイプを試作し、実際の運用の仕組みや実情を確認するに至った一連のプロセスは、現場の課題感と運用のリアルを理解する非常に貴重な機会となりました。
+      </p>
+      <p>
+        単にツールを作るだけでなく、「データ収集・ラベリング・再学習を同時に回す循環パイプライン」や「コストを削った先でどのように事業と働く人の環境を良くしていくか」という本質的な視点を、今後の実務開発へ活かしていきます。
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <p>アノテーション効率化と課題解決の思考プロセス</p>
+  </footer>
+
+</body>
+</html>

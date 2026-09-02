@@ -1,0 +1,484 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 幅を指定した要素（タグ）にborder、paddingを設定した際に要素が広がってしまうことを防ぐため */      
+}
+
+body {
+    line-height: 1;
+    /* 各ブラウザが持っている外部・内部余白、行間を初期化する */
+    font-family: "Oswald", "Noto Sans JP", sans-serif;
+    font-weight: 200;
+    color: #333;
+    /* サイト全体の文字色を定義しておく */
+}
+
+
+
+ul {
+    list-style: none;
+    /*   liの装飾を削除する  */
+}
+
+
+a {
+    text-decoration: none;
+    /*   aタグの初期設定。aタグはでデフォルトで持っている下線を消しておく */
+}
+
+img{
+    max-width: 100%;
+    /* 親要素の大きさ以上大きくならない */
+    vertical-align: bottom;
+    /* imgは、文字と同等扱いなので、必ず下部に余白（デセンダー）が出来てしまうのを防ぐ。他の防ぐ方法としてインライン要素をブロック要素に変える方法もあり */
+}
+
+
+
+
+/*-----------------------------------------
+    各パーツ共有 - setting   
+-----------------------------------------*/
+
+.container {
+    max-width:1024px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+/* 各パーツ共有の設定 ------ 各パーツでこのCSSを再利用（マルチクラス）、または流用  */
+
+
+/*-----------------------------------------
+    header setting
+------------------------------------------*/
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+}
+
+header .header_inner {
+    display: flex;
+    /* 子要素、水平方向の揃えの親要素設定  */
+    height: 100px;
+    /* 高さ指定 100px */
+    align-items: center;
+    /* heightの垂直中央揃えのオプション  */
+    justify-content: space-between;
+    /* 横並び対象子要素の両端揃い設定 */
+}
+
+header h1{
+    padding:0 0 3px 10px;
+    width: 240px;
+     /* フォントサイズや、その他のデザイン装飾は適宜設定 */
+}
+
+header p{
+    font-size: 14px;
+    padding-left: 10px;
+    /* フォントサイズは適宜設定 */
+}
+
+
+
+/*-----------------------------------------
+    nav_menu setting
+------------------------------------------*/
+
+
+nav ul {
+    display: flex;
+    /* 子要素、水平方向の揃えの親要素設定  */   
+}
+
+nav li a {
+    display: block;
+    /* aタグをブロックボックスに設定してマウスの反応範囲を広げる */
+    padding: 15px 25px;
+    /* aタグのテキストに上下（15px）、左右のpadding（25px） */
+    color: #555;
+    /* フォントカラー装飾は適宜設定 */
+    font-weight: 400;
+
+}
+
+
+nav li a:hover {
+    color: #f00;
+}
+
+nav li a[href='#']{
+    border-bottom: 1px solid #f00;
+    color: #f00;
+}
+
+
+/*-----------------------------------------
+    main_image setting loading svg-animation - setting   
+-----------------------------------------*/
+
+.main_image{
+    position: relative;
+    /* .wrap と svgのpositionを使う親として設定 */
+    padding-top: 100px;
+    /* 固定 ( fixed ) されているheaderの高さだけ滑り込む設定を踏まえてpadding-top:100pxを追記 */
+
+}
+
+.top .main_image p{
+    height: 75vh;
+}
+    /* トップページのみの設定 */
+
+.main_image p{
+    height: 50vh;
+
+}
+
+
+.main_image p img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+/* .main_image pの枠内でimgをカバーのテッパン設定 */
+
+.main_image .wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    /* positionを使って、.main_imageと同じ幅、高さを取得 */
+    /* positionを使うことで同じ階層のimgより浮き上がって表示 */
+    animation: load_wrap 2s  forwards;
+    /* 最初画像を覆い隠していて、徐々に透明にして画像を表示する設定のアニメーションを */
+
+}
+
+.main_image svg{
+    position: absolute;
+    /* main_imageのposition系の子要素　.wrapよりあとに書かれているので.wrapより階層が上に表示される */
+    width: 20%;
+    /* 以下、親がpositionの時のタテ・ヨコ中央揃いのテッパン設定 */
+    inset: 0;
+    top: 100px;
+    /* 固定 ( fixed ) されているheaderの高さだけ滑り込む設定を踏まえてtop:100pxを追記 */    
+    margin: auto;
+}
+
+.top .main_image svg{
+    width: 40%;
+}
+/* css シグネチャ　トップページだけの設定 */
+
+.main_image svg path{
+    fill-opacity: 0;
+    /* 塗りの透明度を0設定 */
+    fill: #fff;
+    /* 最終的にこの色を表示 */
+    stroke: #fff;
+    /* 枠線の色設定 */
+    stroke-width: 1;
+    /* 作戦の太さ設定 -> 1 */
+    stroke-dasharray: 586;
+    stroke-dashoffset: 586;
+    animation: load_svg 2s 0.5s forwards;
+    /* 0.5秒遅れてスタート forward　→ 100%まで進んでアニメーション終了 */
+}
+
+@keyframes load{
+    0%{
+
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes load_svg{
+    0%{
+        
+    }
+    60%{
+        fill-opacity: 0;
+        /* ここまで塗りが透明で非表示 */
+         stroke-width: 1;
+         /* ここまで線幅 1を継続 */
+        }
+        100%{
+            fill-opacity: 0.9;
+            /* 60%からここまでで塗りを徐々に表示 */
+            stroke-width: 0;
+            /* ここで線幅を0 */
+            stroke-dashoffset: 0;
+    }
+}
+
+@keyframes load_wrap{
+    0%{
+        opacity: 0.95;
+        /* ほとんど画像を隠す */
+    }
+
+    100%{
+        opacity: 0.25;
+        /* 最後は画像に対して少しだけ色を付ける */
+    }
+}
+
+
+
+/*-----------------------------------------
+   main mainの中で共通なタグの設定
+------------------------------------------*/
+main h3{
+    font-size: 20px;
+    border-left: 3px solid #000;
+    padding: 3px 8px 6px;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+main h4{
+    font-size: 18px;
+    color: #555;
+    font-weight: 400;
+    /* 完成系を見ながら装飾は適宜設定 */
+        padding: 10px 10px;
+}
+
+h4{
+    font-size: 12px;
+    padding: 10px 10px;
+    color: #555;
+    font-weight: 400;
+    /* 完成系を見ながら装飾は適宜設定 */
+}
+
+
+/*-----------------------------------------
+    content slogan
+------------------------------------------*/
+ .slogan{
+    text-align: center;
+    /* テキスト中央揃い */
+    padding: 60px 0 50px;
+    /* 内側余白、上40px、左右0、下70px程度で設定 */
+}
+
+.slogan h2{
+    font-size: 24px;
+    /* フォントサイズ、24pxほどに設定 */
+    line-height: 1.6;
+    font-weight: 600;
+    margin-bottom: 40px;
+    /* 見出しの次のブロックの段落との下側の外余白を */
+}
+
+.slogan p{
+    line-height: 1.8;
+    letter-spacing: 0.07em;
+    /* 行間設定、適宜　一般的には、1.5前後〜2前後での行間設定がよしとされる */
+}
+
+
+
+
+/*-----------------------------------------
+    .product setting
+------------------------------------------*/
+
+.product{
+    padding-top: 30px;
+    margin-bottom: 90px;
+    /* 次の下のブロックに余白を設定 */
+}
+
+.top .product ul{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 100px 30px;
+}
+/* トップページのみの設定 */
+
+
+.product ul{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 50px 15px;
+}
+
+.product li .photo{
+   aspect-ratio: 3/2;
+   margin-bottom: 8px;
+
+}
+
+.product li .photo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.product li .txt{
+    letter-spacing: 0.07em;
+    line-height: 1.8;
+}
+
+
+/*-----------------------------------------
+    footer setting
+------------------------------------------*/
+
+footer{
+    background-color: #333;
+}
+
+
+.footer_inner p{
+    text-align: right;
+    line-height: 100px;
+}
+.footer_inner small{
+    color: #fff;
+}
+
+/*-----------------------------------------
+    lightbox setting
+------------------------------------------*/
+
+.spring .lightboxOverlay{
+    background-color: #797b00;
+}
+.summer .lightboxOverlay{
+    background-color: #00687b;
+}
+.autumn .lightboxOverlay{
+    background-color: #ac6400;
+}
+.winter .lightboxOverlay{
+    background-color: #545353bd;
+}
+
+
+@media(width<768px){
+
+
+/*-----------------------------------------
+    burger responsive setting
+------------------------------------------*/
+
+    .burger{
+        position: fixed;
+        top: 20px;
+        right: 10px;
+        width: 50px;
+        height: 45px;
+        background-color: #fff;
+        z-index: 100;
+    }
+    .burger span{
+        position: absolute;
+        width: 80%;
+        height: 4px;
+        background-color: #333;
+        inset: 0;
+        margin: auto;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .burger span:nth-of-type(1){
+        top: -35%;
+    }
+    .burger span:nth-of-type(3){
+        top: 35%;
+    }
+
+    .burger.active span:nth-of-type(1){
+        top: 0;
+        width: 60%;
+    }    
+    .burger.active span:nth-of-type(2){
+        width: 60%;
+    }    
+    .burger.active span:nth-of-type(3){
+        top: 0;
+        width: 60%;
+    }    
+
+/*-----------------------------------------
+   main_image setting  loading svg-animation responsive - setting   
+-----------------------------------------*/
+    .main_image svg{
+        width: 60%;
+        /* スマホ用の幅設定 */
+    }
+
+    .top .main_image svg{
+        width: 80%;
+    }
+/* css シグネチャ　トップページだけの設定 */
+
+/*-----------------------------------------
+    nav responsive setting
+------------------------------------------*/
+
+    nav{
+        position: fixed;
+        top: 0;
+        left: 100%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding-top: 100px;
+        transition: 0.3s;
+    }
+    nav.drawer{
+        left: 0;
+    }
+
+    nav ul{
+        display: block;
+    }
+    nav li{
+        border: 0;
+    }
+    nav li a {
+        text-align: center;
+        color: #fff;
+        /* フォントカラー装飾は適宜設定 */  
+    }
+
+
+/*-----------------------------------------
+    .product responsive setting
+------------------------------------------*/
+
+    .product{
+        margin-bottom: 80px;
+        /* 次の下のブロックに余白を設定 */
+    }
+    
+    .top .product ul{      
+        grid-template-columns: repeat(1,1fr);
+    }
+    /* トップページのみの設定 */
+
+    .product ul{
+        grid-template-columns: repeat(2,1fr);
+        gap: 80px 15px;
+    
+    }
+    
+    
+}
+/* media end */

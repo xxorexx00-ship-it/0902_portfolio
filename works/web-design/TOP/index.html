@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KH2Z6L7K');</script>
+<!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Webデザイン作品の詳細ページ。PC・SP両方の表示を確認できます。" />
+  <title>Loading... | Hiroshi's Story</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../../../css/animation.css" />
+  <link rel="stylesheet" href="../../../css/responsive.css" />
+</head>
+<body class="site-active">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH2Z6L7K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="site is-active" id="site">
+
+    <!-- Nav -->
+    <header class="nav is-scrolled" id="nav" role="banner">
+      <div class="nav__inner container">
+        <a href="../../../index.html" class="nav__logo" aria-label="トップへ戻る">H.</a>
+        <button class="nav__hamburger" id="navHamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav__menu" id="navMenu" role="navigation" aria-label="メインナビゲーション">
+          <ul class="nav__list">
+            <li><a href="../../../index.html#works" class="nav__link">Works</a></li>
+            <li><a href="../../../about/index.html" class="nav__link">About</a></li>
+            <li><a href="../../../hobby/index.html" class="nav__link">Hobby</a></li>
+            <li><a href="../../../index.html#skills" class="nav__link">Skills</a></li>
+            <li><a href="../../../index.html#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+<main id="main-content">
+
+      <!-- ① タイトル ＋ 操作アクション（縦幅縮小・横並び化） -->
+      <section class="preview-hero reveal">
+        <div class="container">
+          <!-- 上部の「戻る」ボタン -->
+          <p class="lp-back" id="wdBackLink"><a href="../index.html">&larr; Web Design 一覧に戻る</a></p>
+
+          <!-- 新設：ヘッダーコンテンツ（左右分割用ラップ） -->
+          <div class="preview-hero__header">
+
+            <!-- 左側：カテゴリ・タイトル・タグ -->
+            <div class="preview-hero__info">
+              <p class="preview-hero__category" id="wdCategory">Web Design</p>
+              <h1 class="preview-hero__title" id="wdTitle">Loading...</h1>
+              <ul class="work-card__tags" id="wdTags" aria-label="使用技術"></ul>
+            </div>
+
+            <!-- 右側：アクションボタン・ヒント（ツールバーから移動） -->
+            <div class="preview-hero__action">
+              <a id="wdOpenNewTab" href="#" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--sm">新しいタブで開く &rarr;</a>
+              <p class="preview-hint">※クリックで全画面操作できます</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ② PC/SPアイコン（プレビュー） -->
+      <section class="preview-frame-section reveal">
+        <div class="container">
+
+          <!-- ※ preview-toolbar は上の preview-hero 内へ統合したため削除します -->
+
+          <div class="device-row">
+            <button class="device-shell device-shell--laptop" id="deviceLaptop" aria-label="PC版を全画面で開く">
+              <span class="device-shell__label">PC</span>
+              <div class="laptop-frame">
+                <div class="laptop-frame__screen">
+                  <div class="laptop-frame__scale-wrap" id="laptopScaleWrap">
+                    <iframe id="previewFrameLaptop" class="laptop-frame__iframe" tabindex="-1" title="作品プレビュー（PC）" loading="lazy"></iframe>
+                  </div>
+                  <div class="laptop-frame__glass" aria-hidden="true"></div>
+                </div>
+                <div class="laptop-frame__base" aria-hidden="true">
+                  <span class="laptop-frame__notch"></span>
+                </div>
+              </div>
+            </button>
+
+            <button class="device-shell device-shell--phone" id="devicePhone" aria-label="SP版を全画面で開く">
+              <span class="device-shell__label">SP</span>
+              <div class="phone-frame">
+                <div class="phone-frame__notch" aria-hidden="true"></div>
+                <div class="phone-frame__screen">
+                  <div class="phone-frame__scale-wrap" id="phoneScaleWrap">
+                    <iframe id="previewFrameGeneric" class="phone-frame__iframe" tabindex="-1" title="作品プレビュー（SP）" loading="lazy"></iframe>
+                  </div>
+                  <div class="phone-frame__glass" aria-hidden="true"></div>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <p class="preview-note">※ サイトによっては埋め込み表示に対応していない場合があります。表示されない場合は「新しいタブで開く」をご利用ください。</p>
+        </div>
+      </section>
+
+      <!-- 全画面モーダル -->
+      <div class="device-modal" id="deviceModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="プレビュー全画面表示">
+        <div class="device-modal__bar">
+          <span class="device-modal__mode" id="deviceModalMode">PC</span>
+          <button class="device-modal__close" id="deviceModalClose" aria-label="閉じる">&times;</button>
+        </div>
+        <div class="device-modal__body" id="deviceModalBody">
+          <iframe id="previewFrameModal" class="device-modal__iframe" title="作品プレビュー（全画面）"></iframe>
+        </div>
+      </div>
+
+      <!-- ③ 解説 -->
+      <section class="about-page__section reveal">
+        <div class="container">
+          <h2 class="about-page__section-title">解説</h2>
+          <p class="about-page__lead-text" id="wdDesc">読み込み中です…</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <p class="footer__copy">&copy; 2026 Hiroshi Kowata. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- トップへ戻る -->
+    <button class="back-to-top" id="backToTop" aria-label="トップへ戻る">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+  </div>
+
+  <script src="../../../js/works-data.js"></script>
+  <script src="../../../js/webdesign-top.js"></script>
+  <script src="../../../js/observer.js"></script>
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

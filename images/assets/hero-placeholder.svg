@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#D8D8D2"/>
+  <circle cx="1400" cy="380" r="260" fill="#C8C8BE"/>
+  <ellipse cx="1450" cy="820" rx="420" ry="280" fill="#C0C0B4"/>
+  <text x="1450" y="1020" font-family="Inter,sans-serif" font-size="20" fill="rgba(0,0,0,0.18)" text-anchor="middle">Hero Background Placeholder</text>
+</svg>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KH2Z6L7K');</script>
+<!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="木幡博史のポートフォリオ。Webマーケティング20年の経験とエンジニアリングを掛け合わせた作品を掲載しています。" />
+  <meta property="og:title" content="Hiroshi's Story | Portfolio" />
+  <meta property="og:description" content="Webマーケティング20年の経験 × エンジニアリング。制作物をまとめたポートフォリオです。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <title>Hiroshi's Story | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="site-active">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH2Z6L7K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <!-- ==================== Main Site ==================== -->
+  <div class="site is-active" id="site">
+
+    <!-- Nav -->
+    <header class="nav" id="nav" role="banner">
+      <div class="nav__inner container">
+        <a href="#hero" class="nav__logo" aria-label="トップへ戻る">H.</a>
+        <button class="nav__hamburger" id="navHamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav__menu" id="navMenu" role="navigation" aria-label="メインナビゲーション">
+          <ul class="nav__list">
+            <li><a href="#works" class="nav__link">Works</a></li>
+            <li><a href="about/index.html" class="nav__link">About</a></li>
+            <li><a href="hobby/index.html" class="nav__link">Hobby</a></li>
+            <li><a href="#skills" class="nav__link">Skills</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+
+      <!-- 作成中バナー -->
+      <!-- <div class="construction-notice">現在、一部コンテンツを鋭意作成中です。順次更新予定ですのでご了承ください。</div> -->
+
+      <!-- Hero -->
+      <!--
+        【スクロール連動マスク拡大演出について（sticky方式・作り直し版）】
+        js/hero-mask.js (GSAP + ScrollTrigger) が
+        #maskTextGroup の scale を 1→8 に拡大しながら
+        .hero__mask（幕）を最後にフェードアウトさせることで
+        「HK」の穴から背景動画が全画面に広がるように見せています。
+        幕は単色ではなく既存画像(images/top/hero.webp)をマスクして表示しています。
+
+        ・動画差し替え：<source src="..."> のパスを変更するだけでOK
+        　（未配置の場合は images/top/hero.webp が poster として表示されます）
+        ・マスク文字変更：#maskText のテキストを書き換えるだけでOK
+        ・幕の画像：hero.webp の差し替え不可時は .hero__mask-bg の fill が単色フォールバックとして表示されます
+        ・演出の長さ：.hero-pin-wrapper の height（下のCSS）を調整。
+          　JS側では end: "+=180%" のような固定値を持たず、wrapperの高さから自動算出されます。
+        ・prefers-reduced-motion 環境ではsticky固定・拡大アニメーションを行わず、
+          最初から幕を消した最終状態（動画全面表示）で表示します。
+
+        【なぜGSAPのpin:trueをやめてCSSのposition:stickyにしたか】
+        pin:true はJS側が「今どこまでスクロールしたか」をpx単位で計算・キャッシュして
+        position:fixedへの切り替えを手動制御する仕組みのため、
+        ブラウザの拡大縮小（ズーム・ピンチズーム・ウィンドウリサイズ）が
+        演出の途中で発生すると、キャッシュしていた数値と実際のスクロール位置が
+        ズレて「固定解除のタイミングが次のセクションとズレる」不具合が起きていました。
+        position:stickyはブラウザの描画エンジンがネイティブに位置を計算するため、
+        JS側のキャッシュ・再計算が不要になり、拡大縮小中でも常に正しい位置に追従します。
+        GSAP/ScrollTriggerの役割は「固定そのものの管理」から
+        「進捗(0〜1)をマスクのscale値に反映するだけ」に縮小しています。
+      -->
+      <section class="hero-pin-wrapper" id="hero">
+        <div class="hero" aria-label="ヒーロー">
+          <div class="hero__video" aria-hidden="true">
+            <video muted loop playsinline preload="auto" poster="images/top/hero.webp"autoplay>
+              <source src="images/top/hero-bg.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <div class="hero__mask" aria-hidden="true">
+            <svg class="hero__mask-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <mask id="heroMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000">
+                  <rect x="0" y="0" width="1000" height="1000" fill="white" />
+                  <g id="maskTextGroup">
+                    <text id="maskText" text-anchor="middle" dominant-baseline="middle"
+                          fill="black" font-family="Comic Sans MS, MS Mincho" font-weight="600"
+                          font-size="80">
+                      <tspan x="500" y="500" dy="-0.6em" letter-spacing="10">MAKING</tspan>
+                      <tspan x="500" dy="1.0em" letter-spacing="0">THE ROAD☻</tspan>
+                    </text>
+                  </g>
+                </mask>
+              </defs>
+
+              <!-- 画像読み込み前・失敗時のフォールバック単色 -->
+              <rect class="hero__mask-bg" x="0" y="0" width="1000" height="1000" fill="#0A0A0C" mask="url(#heroMask)" />
+              <!-- hero.webp の <image> はJS(hero-mask.js)がPC/SP判定して1枚だけ動的挿入する（二重読み込み防止） -->
+            </svg>
+          </div>
+
+          <div class="hero__inner container" id="heroInner">
+            <div class="hero__text">
+              <p class="hero__eyebrow reveal">Portfolio of Hiroshi Kowata</p>
+              <h2 class="hero__title reveal">日々の作業を<br>もっと楽しく<br>もっと快適に</h2>
+              <p class="hero__sub reveal">「あったらいいな」を形にするのが好きです。<br>誰かが使って「便利になった」と感じてもらえるような、<br>使い心地の良い環境づくりを目指しています。</p>
+              <div class="hero__actions">
+              <a href="index.html#works" class="btn btn--primary reveal" aria-label="作品を見る">作品を見る</a>
+              <a href="about/index.html" class="btn btn--primary reveal" aria-label="職務経歴の詳細を見る">経歴を見る</a>
+            </div>
+            </div>       
+          </div>
+             <a href="#about" class="hero__scroll" aria-label="下にスクロール">
+                        <span class="hero__scroll-text">Scroll</span>
+            <span class="hero__scroll-line"></span>
+
+          </a>
+        </div>
+      </section>
+
+
+      <!-- Works -->
+      <section class="works" id="works" aria-label="作品一覧">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">Works</h2>
+            <p class="section-sub">制作物</p>
+          </div>
+          <ul class="works-hub-grid" aria-label="制作物カテゴリ一覧">
+            <li class="works-hub-card reveal">
+              <a href="works/web-design/index.html">
+                <div class="works-hub-card__thumb">
+                  <img src="images/works/web_top.webp" alt="" loading="lazy" />
+                </div>
+                <div class="works-hub-card__body">
+                  <p class="works-hub-card__label hub-label-icon"><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradMonitor" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <rect x="2.5" y="4.5" width="19" height="13" rx="1.4" stroke="url(#gradMonitor)" stroke-width="1.5"/><path d="M8 20.5h8M12 17.5v3" stroke="url(#gradMonitor)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>Web Design</p>
+                  <h3 class="works-hub-card__title">Webデザイン作品</h3>
+                  <p class="works-hub-card__desc">PC・SP両方の表示を確認できます</p>
+                </div>
+              </a>
+            </li>
+            <li class="works-hub-card reveal">
+              <a href="works/gallery/index.html">
+                <div class="works-hub-card__thumb">
+                  <img src="images/works/art_top.webp" alt="" loading="lazy" />
+                </div>
+                <div class="works-hub-card__body">
+                  <p class="works-hub-card__label hub-label-icon"><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradPaletteHub" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <path d="M12 3.5a8.5 8.5 0 100 17c1 0 1.8-.8 1.8-1.8 0-.45-.18-.86-.45-1.16-.28-.32-.45-.72-.45-1.14 0-.85.75-1.5 1.6-1.5H16a4.5 4.5 0 004.5-4.5C20.5 6.4 16.7 3.5 12 3.5z" stroke="url(#gradPaletteHub)" stroke-width="1.6"/><circle cx="7.6" cy="10.6" r=".9" fill="url(#gradPaletteHub)"/><circle cx="9.3" cy="7.3" r=".9" fill="url(#gradPaletteHub)"/><circle cx="13.2" cy="6.6" r=".9" fill="url(#gradPaletteHub)"/>
+      </svg>Art Gallery</p>
+                  <h3 class="works-hub-card__title">グラフィック作品</h3>
+                  <p class="works-hub-card__desc">Photoshop・Illustrator制作物</p>
+                </div>
+              </a>
+            </li>
+            <li class="works-hub-card reveal">
+              <a href="works/python-ai/index.html">
+                <div class="works-hub-card__thumb">
+                  <img src="images/works/app_top.webp" alt="" loading="lazy" />
+                </div>
+                <div class="works-hub-card__body">
+                  <p class="works-hub-card__label hub-label-icon"><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradCpu" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <rect x="6" y="6" width="12" height="12" rx="1.2" stroke="url(#gradCpu)" stroke-width="1.5"/><rect x="9.3" y="9.3" width="5.4" height="5.4" rx="0.6" stroke="url(#gradCpu)" stroke-width="1.4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2" stroke="url(#gradCpu)" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>Python / AI Tools</p>
+                  <h3 class="works-hub-card__title">開発ツール</h3>
+                  <p class="works-hub-card__desc">Python・AIを活用した自作アプリ</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+
+      <!-- About -->
+      <section class="about" id="about" aria-label="自己紹介">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">About</h2>
+            <p class="section-sub">自己紹介</p>
+          </div>
+          <div class="about__inner">
+            <!-- 上段：写真＋テキスト全体（横並び） -->
+            <div class="about__intro">
+              <div class="about__photo reveal">
+                <div class="about__photo-placeholder" aria-label="プロフィール写真"><span><img src="images/top/about_me.webp" alt=""></span></div>
+              </div>
+              <div class="about__intro-text reveal">
+                <h3 class="about__name">木幡 博史 / Hiroshi Kowata</h3>
+                <p class="about__role">Web Director / Marketer</p>
+                <p class="about__summary">これまでBtoC向けWebサービスの運営に携わり、メールマーケティング、顧客対応、データ分析、LP制作、HTML/CSSによるクリエイティブ制作まで一貫して担当してきました。直近ではWebメディア3媒体の運営責任者として、売上だけでなく利益率も意識した改善を行い、コスト対比粗利3倍を継続維持しました。</p>
+                <p class="about__bio">業務では、まず現状を観察し、「なぜその結果になったのか」を考えることを大切にしています。成果が出ている施策は理由を分析して活かし、課題があれば小さく改善を重ねながら運営してきました。</p>
+                <p class="about__bio">また、急な担当変更や新しい業務にも柔軟に対応し、必要な知識を吸収しながら成果につなげてきました。今後もユーザー視点と事業視点の両方を意識し、サービスの価値向上に貢献していきたいと考えています。</p>
+                <p class="about__bio">現在は職業訓練校にてHTML/CSS・JavaScript・Python・Photoshop/Illustratorを体系的に学習中。技術的理解を深め、Webディレクション・制作の両面で即戦力として貢献できる人材を目指しています。</p>
+                <a href="about/index.html" class="btn btn--primary about__detail-btn">職務経歴を詳しく見る</a>
+              </div>
+            </div>
+
+            <!-- 下段：スキルツリー -->
+            <div class="about__skills-wrap reveal">
+              <h3 class="about__skills-heading">Skill Tree</h3>
+              <div class="about__skills-text">
+                <div class="skill-category">
+                  <h3 class="skill-category__title"><span class="skill-category__title-icon"><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradChart" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <path d="M4 20V13M9.5 20V9M15 20V5M20 20V11" stroke="url(#gradChart)" stroke-width="1.7" stroke-linecap="round"/>
+      </svg></span>Webディレクション・運営</h3>
+                  <ul class="skill-category__list">
+                    <li>Webサービス運営・コンテンツ管理<br>（会員制サービス／マッチングアプリ）</li>
+                    <li>メール配信設計・パーソナライズ施策<br>（開封率約10％・読者数2,000人規模）</li>
+                    <li>データ集計・分析<br>→ 施策立案・運営方針の意思決定（日次・月次KPI管理）</li>
+                    <li>CRM/MA運用・キャンペーン企画・運営方針提案</li>
+                  </ul>
+                </div>
+
+                <div class="skill-category">
+                  <h3 class="skill-category__title"><span class="skill-category__title-icon"><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradCode" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <path d="M8.5 8L4.5 12l4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13" stroke="url(#gradCode)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></span>Web制作・コーディング</h3>
+                  <ul class="skill-category__list">
+                    <li><strong>HTML/CSS</strong><br>前職にて実務経験（LP更新・改善提案・AI活用コーディング）</li>
+                    <li><strong>JavaScript</strong><br>訓練校にて基礎を習得（動的コンテンツの実装・カスタマイズ対応可）</li>
+                    <li><strong>Python</strong><br>訓練校にて学習（業務効率化・データ処理への応用可能）</li>
+                  </ul>
+                </div>
+
+                <div class="skill-category">
+                  <h3 class="skill-category__title"><span class="skill-category__title-icon"><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradPalette" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <path d="M12 3.5a8.5 8.5 0 100 17c1 0 1.8-.8 1.8-1.8 0-.45-.18-.86-.45-1.16-.28-.32-.45-.72-.45-1.14 0-.85.75-1.5 1.6-1.5H16a4.5 4.5 0 004.5-4.5C20.5 6.4 16.7 3.5 12 3.5z" stroke="url(#gradPalette)" stroke-width="1.6"/><circle cx="7.6" cy="10.6" r=".9" fill="url(#gradPalette)"/><circle cx="9.3" cy="7.3" r=".9" fill="url(#gradPalette)"/><circle cx="13.2" cy="6.6" r=".9" fill="url(#gradPalette)"/>
+      </svg></span>デザインツール</h3>
+                  <ul class="skill-category__list">
+                    <li><strong>Adobe Photoshop / Illustrator</strong><br>訓練校にて基礎を習得（バナー制作・素材加工対応可）</li>
+                    <li><strong>Canva</strong><br>実務使用（バナー・キャンペーン画像の作成・編集）</li>
+                    <li><strong>Microsoft Excel</strong><br>VLOOKUP・IFS・COUNTIF等の関数を実務使用</li>
+                  </ul>
+                </div>
+
+                <div class="skill-category">
+                  <h3 class="skill-category__title"><span class="skill-category__title-icon"><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradTeam" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <circle cx="9" cy="7.5" r="3" stroke="url(#gradTeam)" stroke-width="1.6"/><path d="M3.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6" stroke="url(#gradTeam)" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="9" r="2.3" stroke="url(#gradTeam)" stroke-width="1.6"/><path d="M15.2 20c.1-2.7 1.9-5 4.3-5.6" stroke="url(#gradTeam)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg></span>マネジメント</h3>
+                  <ul class="skill-category__list">
+                    <li>主任リーダーとして最大4名のメンバーマネジメント<br>（最長3年）</li>
+                    <li>属人化していた運用体制の標準化<br>持続可能な運営基盤の構築</li>
+                    <li>クレーム対応・顧客関係強化・チームの業務効率化</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 自分自身を知ってもらうリンクカード -->
+            <a href="hobby/index.html" class="hobby-cta-card reveal" aria-label="趣味・人となりのページへ">
+              <div class="hobby-cta-card__icons" aria-hidden="true">
+                <span><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradPlane" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <path d="M3 12.5l18-8-7 18-2.8-7.6L3 12.5z" stroke="url(#gradPlane)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg></span>
+                <span><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradGuitar" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <circle cx="9.3" cy="15.3" r="4.3" stroke="url(#gradGuitar)" stroke-width="1.6"/><path d="M12.2 12.2L18 6.5M16.3 4.7l3 3M18 4l2 2" stroke="url(#gradGuitar)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg></span>
+                <span><svg class="icon-grad" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="gradPaw" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+        <circle cx="7.2" cy="9" r="1.7" stroke="url(#gradPaw)" stroke-width="1.5"/><circle cx="12" cy="6.8" r="1.7" stroke="url(#gradPaw)" stroke-width="1.5"/><circle cx="16.8" cy="9" r="1.7" stroke="url(#gradPaw)" stroke-width="1.5"/><path d="M7 14.2c0-2.1 2.2-3.4 5-3.4s5 1.3 5 3.4-2.2 5.3-5 5.3-5-3.2-5-5.3z" stroke="url(#gradPaw)" stroke-width="1.5"/>
+      </svg></span>
+              </div>
+              <div class="hobby-cta-card__text">
+                <p class="hobby-cta-card__eyebrow">More About Me</p>
+                <h3 class="hobby-cta-card__title">私のライフスタイル<br>&amp; マインドセット</h3>
+                <p class="hobby-cta-card__desc">旅行・音楽・家族との時間から、仕事に活きる考え方まで。</p>
+              </div>
+              <span class="hobby-cta-card__btn">詳しく見る <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Skills -->
+      <section class="skills" id="skills" aria-label="スキル一覧">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-sub">技術スタック</p>
+          </div>
+          <ul class="skills__grid" aria-label="スキル">
+            <li class="skills__item reveal"><span class="skills__name">HTML / CSS</span></li>
+            <li class="skills__item reveal"><span class="skills__name">JavaScript</span></li>
+            <li class="skills__item reveal"><span class="skills__name">jQuery</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Python</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Gemini API</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Streamlit</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Git / GitHub</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Illustrator</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Photoshop</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Web Marketing</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Excel / データ分析</span></li>
+            <li class="skills__item reveal"><span class="skills__name">CRM / MA</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Notion</span></li>
+            <li class="skills__item reveal"><span class="skills__name">Flask</span></li>
+            <li class="skills__item reveal"><span class="skills__name">コピーライティング</span></li>
+            <li class="skills__item reveal"><span class="skills__name">チームマネジメント</span></li>
+          </ul>
+        </div>
+      </section>
+      <!-- Contact -->
+      <section class="contact" id="contact" aria-label="お問い合わせ">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-sub">お問い合わせ</p>
+          </div>
+          <div class="contact__inner">
+            <p class="contact__lead reveal">ご連絡・お問い合わせは<br>以下よりお願いいたします。</p>
+            <a href="mailto:xx.ore.xx00@google.com" class="contact__email reveal">xx.ore.xx00@google.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <p class="footer__copy">&copy; 2026 Hiroshi Kowata. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- トップへ戻る -->
+    <button class="back-to-top" id="backToTop" aria-label="トップへ戻る">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+  </div><!-- /.site -->
+
+  <script src="js/observer.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/fade-slider.js"></script>
+
+  <!-- Hero スクロール連動マスク拡大演出（GSAP + ScrollTrigger） -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/hero-mask.js" defer></script>
+</body>
+</html>

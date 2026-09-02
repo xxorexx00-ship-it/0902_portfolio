@@ -1,0 +1,698 @@
+@charset "UTF-8";
+
+*{
+    margin: 0 ;
+    padding: 0;
+    line-height: 1;
+    box-sizing: border-box;
+    /* 幅を指定した要素（タグ）にborder、paddingを設定した際に要素が広がってしまうことを防ぐため */
+}
+
+body {
+    font-family: "Oswald", "Noto Sans JP", sans-serif;
+    /*   ここまでフォントファミリー  googlefontからの英文と、日本語を設定  */
+    color: #333;
+    /* サイト全体の文字色を定義しておく */
+}
+
+ul {
+    list-style: none;
+    /*   liの装飾を削除する  */
+}
+
+a {
+    text-decoration: none;
+    /*   aタグの初期設定。aタグはでデフォルトで持っている下線を消しておく */
+}
+
+img{
+    max-width: 100%;
+    /* 親要素の大きさ以上大きくならず、かつ、自身の原寸大以上に大きくならない */
+    height: auto;
+    /* タグのほうでの高さ指定を調整 今のところ、あってもなくても-- Wordpressでは使うかも */
+    vertical-align: bottom;
+    /* imgは、文字と同等扱いなので、必ず下部に余白（デセンダー）が出来てしまうのを防ぐ。他の防ぐ方法としてインライン要素をブロック要素に変える方法もあり */
+}
+
+/*-----------------------------------------
+    pc max-setting   
+-----------------------------------------*/
+
+.container {
+    max-width: 1024px;
+    /* 最大値、1024px それ以下可変 max-width使用 */
+    margin: 0 auto;
+    /* ブロック要素の中央揃い m0ｰa */
+    padding: 30px 20px 150px;
+    
+}
+
+.header_inner.container{
+    padding:0 10px;
+    /* header_innerの.containerは、上下の余白が必要ないのでここだけ変更 */
+    max-width: 1240px;
+    /* .header_innerだけ、最大値、1240px それ以下可変 max-width使用 */    
+}
+
+.access .container {
+    /* .accessの中の.containerは、幅を設定せず、ほぼ目一杯見せたいなどの場合の例外を作る際の設定 */
+     max-width: none;
+    /* 幅の指定の無効（初期化） */
+    padding: 80px 10px 100px;
+    /* 内側の余白だけ少し変更 */
+
+}
+
+.footer_logo.container{
+    padding: 80px 20px;    
+}
+
+/*PCの情報コンテンツの最大幅の設定 ------ 各パーツでこのCSSを再利用、または流用（マルチクラス） */
+
+
+/*-----------------------------------------
+    html - smooth scroll setting   
+-----------------------------------------*/
+
+html {
+    scroll-behavior: smooth;
+    /* PC表示の際、 cssの、scroll-behavior: smoothを設定 */
+    scroll-padding-top: 100px;
+    /* 固定された(fixed) headerの下の要素の滑り込みを防ぐ */
+}
+
+
+/*-----------------------------------------
+ header  header_inner - logo setting   
+-----------------------------------------*/
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+     /* positionをfixedにし、LPの時にロゴとナビがいつも見えるよう設定 */
+     /* 位置 top:0 幅 positionを使うと幅がなくなるので、w100p 背景色を白に設定 */
+     z-index: 1;
+     /* プラグインbxSliderもposition設定なので、先にpositionしているheaderのz-indexの数値をあげる */
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    /* ロゴとナビを横並び、および100pxの高さでロゴとナビを縦配置の中央揃いに設定 */
+}
+
+.header_inner h1{
+    width: 230px;
+}
+
+.header_inner .logo p{
+    font-size: 13px;
+    text-align: right;
+    padding: 7px 0;
+}
+
+/*-----------------------------------------
+     header_inner nav setting   
+-----------------------------------------*/
+
+    
+.header_inner nav  ul{
+    display: flex;
+    /* flexでの横並び */
+}
+
+.header_inner nav ul a{
+    display: block;
+    padding: 15px 30px;
+    color: #333;
+    font-weight: 400;
+    transition: .3s;
+    /* hoverの時のtransition設定 */
+} 
+
+.header_inner nav ul a:hover{
+    color: #ff4d0c;
+    /* 適宜設定 */
+}
+
+
+
+/*-----------------------------------------
+    main_img - setting   
+-----------------------------------------*/
+
+
+.main_img {
+    padding-top: 100px;
+    /* headerをfixedにすると浮き上がって.main_imgがheaderの高さだけ滑り込むので、余白で滑り込んだだけ余白を設定 */
+    background-color: #fff;
+    /* パララックスで設定されている画像が見えてしまう -> clip-pathを画像に使っているのでその対処 */
+    position: relative;
+    /* text_area のposition親宣言  */
+}
+
+
+
+.main_img p.photo{
+    height: 70vh;
+    /* widthはデフォルトの親の幅を継承。高さを70vhに指定 */
+}
+.main_img p.photo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    /* object:fitの設定 */
+    clip-path: polygon(45% 0,100% 0,100% 100%,35% 100%);
+    /* clip^path 設定 */
+}
+.main_img .text_area{
+    position: absolute;
+    left: 5%;
+    bottom: 10%;
+    padding: 30px 40px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.main_img .text_area h2{
+    font-size: 70px;
+    letter-spacing: 0.1em;
+    
+}
+.main_img .text_area h2 span{
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    padding: 15px 10px;
+    margin-bottom: 40px;
+}
+
+.main_img .text_area p{
+    font-size: 16px;
+    font-family: "Noto Sans JP";
+    padding-left: 10px;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+}
+
+
+
+/*-----------------------------------------
+    main - setting   
+-----------------------------------------*/
+
+main h2{
+    font-size: 50px;
+    /* フォントサイズ、40px前後で設定 */
+    padding: 20px 0 40px;
+    /* 上下の内側余白、padding:20px 0 60pxほど設定 */
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+main h2 span{
+    display: block;
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+main h3{
+    font-size: 19px;
+    border-left: 4px solid #666;
+    padding:9px 8px;
+    margin-bottom: 10px;
+    background-color: #eee;
+}
+
+main .message h2 span{
+    padding-top: 18px;
+    /* .messageの時のspanだけ文字の関係でpadding-topを大きめに設定 */
+}
+
+
+
+
+/*-----------------------------------------
+    message - setting   
+-----------------------------------------*/
+
+
+ .message{
+    /* 教科書では各sectionごと背景色を変える設定 */
+    background-color: #fff;
+    /* .message::beforeの背景画像を表示させるための次のブロックへの余白 */
+    margin-bottom: 400px;
+} 
+ .message::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/bg_img.webp);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    /* 擬似要素に、全画面表示の背景画像の設定と、1つ下の階層に表示させるためのz-index:-1設定 */
+ }
+
+ .message p{
+
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.message p:last-of-type{
+    margin-bottom: 100px;
+/* .messageのpたぐの最後のpタグだけpaddingの設定を変える場合の設定 */
+}
+
+.message ul{
+    display: flex;
+    justify-content: space-between;
+    /* 横並び、両端揃い設定 */
+}
+
+.message ul li{
+    width: 29%;
+    /* 幅、31%設定 */
+    aspect-ratio: 5/4;
+    /* 画像の親にアスペクト比の設定 */
+}   
+
+.message ul li img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    /* object-fit:coverの設定 */
+}
+/*-----------------------------------------
+    voice - setting   
+-----------------------------------------*/
+
+.voice{
+    /* 教科書では各sectionごと背景色を変える設定 */
+    background-color: #fff;
+}
+
+
+.voice ul{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    /* 横並び、両端揃い設定 */
+}
+
+.voice li{
+    width:28%;
+    /* 幅、28%*/
+} 
+
+
+.voice li .photo{
+    aspect-ratio: 1/1;
+    margin-bottom: 10px;
+    /* 画像の親にアスペクト比の設定 正方形の場合は、1/1 */
+}
+
+.voice li .photo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* object-fit:coverの設定 正方形を正円にするため border-radiusを50% */
+}
+
+.voice  li .text{
+    line-height: 1.8;
+    padding: 0 10px;
+}
+
+/*-----------------------------------------
+    Call to action - setting   
+-----------------------------------------*/
+
+ a.cta{
+    display: block;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 10px;
+    background-color: #444;
+    color: #fff;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+ a.cta:hover{
+    color: #222;   
+    background-color: #eee;  
+    border: 1px solid #444;
+}
+
+/*-----------------------------------------
+    project - setting   
+-----------------------------------------*/
+
+.project{
+    /* 教科書では各sectionごと背景色を変える設定 */
+    background-color: #fff;
+}
+.project .project_item{
+    display: flex;
+    /* 子要素、水平方向の揃えの親要素設定  */
+    justify-content: space-between;
+    /*  水平方向の揃えのオプション ( 両端揃い )*/
+    margin-bottom: 70px;
+     /* 次の下のブロックに余白（50pxほど）を設定 */
+
+}
+
+.project .project_item .photo{
+    width: 38%;
+    aspect-ratio: 5/3;
+    /* 幅の取得 40% 画像の親にアスペクト比の設定 */  
+ }
+.project .project_item .photo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.project .project_item .text{
+    width: 55%;
+     /* 幅の取得 55% */  
+ }
+
+ .project .project_item .text p{
+     line-height: 1.8;
+     /* 一番読みやすい行間は、line-heightの、1.5～2の間とされてる */    
+     font-family:Arial, Helvetica, sans-serif;
+ }
+ 
+/*-----------------------------------------
+    access - setting   
+-----------------------------------------*/
+
+.access{
+    /* 教科書では各sectionごと背景色を変える設定 */
+    background-color: #fff;
+}
+
+
+.access iframe{
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    filter: grayscale(0.8);
+    /* 適宜 */
+}
+
+.access p{
+    padding: 10px 0;
+    text-align: center;
+    font-weight:400;
+    /* 適宜 */
+}    
+
+
+
+/*-----------------------------------------
+    qaa - setting   
+-----------------------------------------*/
+
+.qaa{
+    /* 教科書では各sectionごと背景色を変える設定 */
+    background-color: #fff;
+}
+
+.qaa dl dt{
+    padding: 20px;
+    color: #fff;
+    line-height: 1.5;
+    background-color: #444;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+.qaa dl dt.active{
+    background-color: #eee;
+    color: #444;
+    border: 1px solid #000;
+
+}
+
+.qaa dl dd{
+    padding: 5px 20px;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    display: none;
+}
+
+
+
+
+
+/*-----------------------------------------
+    footer - setting   
+-----------------------------------------*/
+
+footer{
+    background-color: #444;
+    color: #fff;
+}
+
+footer .footer_logo p:nth-of-type(1){
+    width: 180px;
+}
+footer .footer_logo p{
+    font-size: 13px;
+    padding: 4px 0;
+}
+
+/*-----------------------------------------
+    fontawesome - setting  トップに戻るボタン
+-----------------------------------------*/
+
+.topback{
+    position: fixed;
+    /* pof */
+    right: 5%;
+    bottom: 10%;
+    /* r10p b10p 数値は適宜 */
+    padding: 10px 8px;
+    /* p10-8 数値は適宜 */
+    background-color: #052e51;
+    color: #fff;
+    /* フォントカラー・背景色等の装飾は適宜 */
+    border: 1px solid #fff;
+    /* 最初は表示しないようにして、スクロールがある距離達したならjQueryで表示させる */
+    display: none;
+    /* z-index: 1; */
+}
+
+.topback i{
+    font-size: 30px;
+}
+
+@media (width<768px){
+
+
+/*-----------------------------------------
+    .burger - responsive setting   
+-----------------------------------------*/
+
+.burger{
+    position: fixed;
+    width: 60px;
+    height: 50px;
+    top: 25px;
+    right: 10px;
+    /* border: 1px solid #000; */
+    background-color: #fff;
+    z-index: 100;
+}
+.burger span{
+    position: absolute;
+    width: 80%;
+    height: 4px;
+    background-color: #333;
+    inset: 0;
+    margin: auto;
+    transition: 0.2s;
+}
+
+.burger span:nth-of-type(1){
+    top: -35%;
+}
+.burger span:nth-of-type(3){
+    top: 35%;
+    transition-delay: 0.1s;
+}
+
+.burger.active span:nth-of-type(1){
+    top: 0;
+}
+
+.burger.active span:nth-of-type(3){
+    top: 0;
+}
+
+    
+
+/*-----------------------------------------
+  header  header_inner - responsive - setting   
+-----------------------------------------*/
+
+
+.header_inner .logo p{
+    text-align: left;
+    padding-left: 25px;
+    /* 微調整 */
+}
+
+
+
+/*-----------------------------------------
+     header_inner nav  - responsive - setting   
+-----------------------------------------*/
+.header_inner nav{
+    position: fixed;
+    top: 100px;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: 0.3s;
+    z-index: 1;
+    /* プラグインbxSliderもposition設定なので、先にpositionしているnavのz-indexの数値をあげる */
+}
+
+.header_inner nav.drawer{
+    left: 0;
+}
+
+.header_inner nav  ul{
+    display: block;
+    /* flexでの横並び無効 */
+}
+
+.header_inner nav ul a{  
+    padding: 30px 0;
+    text-align: center;
+    /* 文字の中央揃い、paddin上下を広く設定 */
+} 
+
+/*-----------------------------------------
+    main_img responsive - setting   
+-----------------------------------------*/
+
+.main_img p.photo{
+    height:50vh;
+    /* 設定されている高さの変更 -> 50vhほど 微調整 */
+}
+
+.main_img p.photo img{
+    clip-path: none;  
+    /* 設定されているclip-pathの無効 */
+}
+
+
+.main_img .text_area{
+    position: static;
+    /* positionの初期設定・無効 */
+    padding: 20px;
+    /* oaddingの微調整 */
+}
+
+.main_img .text_area h2{
+    font-size: 40px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    /* フォントサイズと文字間の調整 */
+    
+}
+
+
+/*-----------------------------------------
+    main - responsive - setting   
+-----------------------------------------*/
+main h2{
+    font-size: 35px;
+    /* フォントサイズ調整 */
+}
+
+/*-----------------------------------------
+    message - responsive - setting   
+-----------------------------------------*/
+
+.message p{
+    text-align: left;
+    /* テキスト中央揃いを左揃え */
+}
+
+.message ul{
+    display: block;
+    /* flexでの横並びの無効 */
+}
+
+.message ul li{
+    width: 100%;
+    margin-bottom: 40px;
+    /* width:100% margin-bottomの設定 */
+}   
+/*-----------------------------------------
+    voice - responsive setting   
+-----------------------------------------*/
+.voice ul{
+    display: block;
+    /* flexでの横並びの無効 */    
+}
+
+.voice li{
+    width:100%;
+    margin-bottom: 40px;
+    /* width:100% margin-bottomの設定 */    
+} 
+
+/*-----------------------------------------
+    project - responsive setting   
+-----------------------------------------*/
+.project .project_item{
+    display: block;
+    /* flexでの横並びの無効 */      
+}
+
+.project .project_item .photo{
+    width: 100%; 
+    margin-bottom: 5px; 
+    /* width:100% margin-bottomの設定 */       
+ }
+ .project .project_item .text{
+    width: 100%; 
+    /* width:100%設定 */      
+ }
+
+/*-----------------------------------------
+    footer - responsive setting   
+-----------------------------------------*/
+
+footer .footer_logo{
+    text-align: center;
+}
+
+
+
+}/* media end */

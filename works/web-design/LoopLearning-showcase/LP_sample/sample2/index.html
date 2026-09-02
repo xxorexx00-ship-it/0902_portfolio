@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEO EAR - 次世代の聴覚体験</title>
+  
+  <style>
+    /* ==========================================================================
+       【重要】コンテナクエリの起点設定
+       ========================================================================== */
+    body {
+      container-type: inline-size;
+      container-name: preview;
+      
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #ffffff;
+      background-color: #0a0b10;
+      line-height: 1.6;
+      letter-spacing: 0.08em;
+      margin: 0;
+      padding: 0;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 0 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #6366f1, #ec4899);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+    }
+
+    /* ==========================================================================
+       Header (絶対配置にして枠内に固定)
+       ========================================================================== */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 10px 5%; 
+      background: rgba(10, 11, 16, 0.7); 
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 0.9rem; 
+      letter-spacing: 0.25em;
+      background: linear-gradient(to right, #fff, #aaa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .cta-btn {
+      background: #ffffff;
+      color: #0a0b10;
+      padding: 5px 12px; 
+      border-radius: 4px; 
+      font-size: 0.7rem; 
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero {
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 15px;
+      background: linear-gradient(180deg, #ffffff 30%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    .hero-image-wrap {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 20px 40px rgba(99, 102, 241, 0.25));
+    }
+
+    /* ==========================================================================
+       Features Section (初期値はスマホ用1カラム)
+       ========================================================================== */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .feature-col-side {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .feature-item {
+      padding: 24px;
+    }
+
+    .feature-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-item p {
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    .feature-col-center {
+      display: flex;
+      justify-content: center;
+      order: -1;
+    }
+
+    .feature-center-img {
+      width: 100%;
+      max-width: 280px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    /* ==========================================================================
+       Spec Section
+       ========================================================================== */
+    .spec-panel {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .spec-info h2 {
+      font-size: 1.6rem;
+    }
+
+    .spec-info p {
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    .spec-list {
+      list-style: none;
+    }
+
+    .spec-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 0.75rem;
+      color: #475569;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ==========================================================================
+       【修正】Container Queries (枠の幅が650px以上でPCレイアウト)
+       ========================================================================== */
+    @container preview (min-width: 650px) {
+      .hero-title { font-size: 4rem; }
+      
+      .features-grid {
+        grid-template-columns: 1fr 280px 1fr;
+        gap: 15px;
+      }
+      
+      .feature-col-center {
+        order: 0;
+      }
+
+      .spec-panel {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">NEO LABS</a>
+      <a href="#" class="cta-btn">Pre-Order</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-container">
+        <span class="tag">Next Generation</span>
+        <h1 class="hero-title">Sound, Reimagined.</h1>
+        <p class="hero-lead">無駄を削ぎ落としたガラスの造形と、脳に直接響くような圧倒的解像度。</p>
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="Headphones">
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-title">
+        <span class="tag">Features</span>
+        <h2>感性を刺激する革新</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-col-side">
+          <div class="feature-item glass-card">
+            <h3>01. Smart Transparency</h3>
+            <p>周囲の環境音をAIが解析。必要な音だけを自然に透過させる没入感。</p>
+          </div>
+          <div class="feature-item glass-card">
+            <h3>02. Bio-Polymer Drive</h3>
+            <p>有機素材から着想を得た新開発のダイヤフラムが、原音忠実な響きを作ります。</p>
+          </div>
+        </div>
+
+        <div class="feature-col-center">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Art" class="feature-center-img">
+        </div>
+
+        <div class="feature-col-side">
+          <div class="feature-item glass-card">
+            <h3>03. Air-Fit Design</h3>
+            <p>人間工学をアップデートし、装着していることを忘れるほどの軽さを実現。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="spec-panel glass-card">
+        <div class="spec-info">
+          <span class="tag">Spec</span>
+          <h2>妥協のない仕様</h2>
+          <p>プロダクトの美しさは、内部の緻密な設計から成り立っています。</p>
+        </div>
+        <div>
+          <ul class="spec-list">
+            <li><span>駆動時間</span><span>最大 48 時間</span></li>
+            <li><span>Bluetooth</span><span>5.4 対応</span></li>
+            <li><span>防水防塵</span><span>IPX7 等級</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 NEO LABS.</p>
+  </footer>
+
+</body>
+</html>

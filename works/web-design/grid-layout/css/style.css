@@ -1,0 +1,533 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 幅を指定した要素（タグ）にborder、paddingを設定した際に要素が広がってしまうことを防ぐため */      
+}
+
+body {
+    font-family: "Oswald", "Noto Sans JP", sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    /* 各ブラウザが持っている外部・内部余白、行間を初期化する */
+    color: #333;
+    /* サイト全体の文字色を定義しておく */
+}
+
+ul {
+    list-style: none;
+    /*   liの装飾を削除する  */
+}
+
+a {
+    text-decoration: none;
+    /*   aタグの初期設定。aタグはでデフォルトで持っている下線を消しておく */
+}
+
+img{
+    max-width: 100%;
+    /* 親要素の大きさ以上大きくならない かつ、自分の大きさ以上にはならない */
+    vertical-align: bottom;
+    /* imgは、文字と同等扱いなので、必ず下部に余白（デセンダー）が出来てしまうのを防ぐ。他の防ぐ方法としてインライン要素をブロック要素に変える方法もあり */
+}
+
+
+/*-----------------------------------------
+    html setting
+------------------------------------------*/
+html{
+    scroll-behavior: smooth;
+
+    scroll-padding-top: 100px;
+    /* headerが固定(fixed)されて、次の要素がheaderに滑り込んでいる高さだけpaddingで余白を設置 */
+}
+/*-----------------------------------------
+    header setting
+------------------------------------------*/
+header{
+    position: fixed;
+    /* pof */
+    top: 0;
+    /* t0 */
+    left: 0;
+    /* l0 */
+    width: 100%;
+    /* w100p */
+    background-color: #fff;
+    /* bgc - パララックスのレイヤ下にある画像を透過させないため */
+    /* z-index: 2; */
+}
+
+header .header_inner {
+    max-width:1024px;
+    /* レスポンシブ対応踏まえて  ma1024 -> max-width:1024px; 1024px以下は可変 */
+    padding: 0 20px;
+    /* 左右に余白 p0-20 */
+    margin: 0 auto;
+    /* 幅指定ブロックの中央揃い m0-a */
+    display: flex;
+    /* 子要素、水平方向の揃えの親要素設定  */
+    height: 100px;
+    /* 高さ指定 100px */
+    align-items: center;
+    /* heightの垂直中央揃えのオプション  */
+    justify-content: space-between;
+    /* 横並び対象子要素の両端揃い設定 */
+
+}
+
+header h1{
+    width: 250px;
+    /* 今回はh1で囲んでいる画像の拡張子がsvgなので、親枠の幅を設定しないと枠のある幅まで広がるので幅を指定 */
+    padding-bottom: 5px;
+     /* フォントサイズや、その他のデザイン装飾は適宜設定 */
+}
+
+header p{
+    font-size: 14px;
+    /* fz14 */
+    font-weight: 400;
+    /* フォントサイズは適宜設定 */
+}
+
+
+
+/*-----------------------------------------
+    nav_menu setting
+------------------------------------------*/
+
+
+nav ul {
+    display: flex;
+    /* 子要素、水平方向の揃えの親要素設定  */   
+}
+
+
+nav li a {
+    display: block;
+    /* aタグをブロックボックスに設定してマウスの反応範囲を広げる */
+    padding: 15px 25px;
+    /* aタグのテキストに上下（15px）、左右のpadding（25px） */
+    color: #444;
+    /* フォントカラー装飾は適宜設定 */
+    font-weight: 500;
+    /*  */
+    transition: 0.3s;
+
+}
+
+nav li a:hover {
+    color: #f00;
+    /* ホバー時の背景色、フォントカラーは適宜 */
+}
+
+
+
+/*-----------------------------------------
+    main_image setting
+------------------------------------------*/
+
+.main_image{
+    padding: 100px 10px 0;
+    /* headerがpositionを使い、その高さ100px浮き上がっている場所に滑り込んでいるので、その滑り込んでいる分をpadding 100px 10px 0で補う */
+    background-color: #fff;
+    /* bgc - パララックスのレイヤ下にある画像を透過させないため */
+}
+
+.main_image ul{
+    display: grid;
+    /* dg -> display: grid */
+    grid-template-columns: repeat(5,1fr);
+    /* gtc -> grid-template-columns:repeat() */
+    gap: 10px;
+    /* g10 -> gap:10px */
+    grid-auto-rows: 230px;
+    /* gar180 -> grid-auto-rows: 180px  */
+
+}
+
+.main_image li img{
+    object-fit: cover;
+    /* ob cover */
+    width: 100%;
+    /* w100p */
+    height: 100%;
+    /* h100p */
+}
+
+.main_image li.list1{
+    grid-column: 1/3;
+    /* gc -> grid-column: */
+    grid-row: 1/3;
+    /* gr -> grid-row: */
+    
+
+}
+
+
+
+
+/*-----------------------------------------
+   main mainの中で共通なタグの設定
+------------------------------------------*/
+
+
+main h3{
+    font-size: 20px;
+    /* フォントサイズ、20pxほどに設定  fz20 */
+    border-left: 4px solid #000;
+    /* 左枠線4px -> bdl 修正枠線4px border-left: 4px solid #000; */
+    padding: 6px 8px;
+    /* 見出しの余白 p6-8 */
+    margin-bottom: 8px;
+    /* mb8 */
+}
+
+main h4{
+    font-size: 18px;
+    /* フォントサイズ、18pxほどに設定 fz18 */
+    font-weight: 400;
+    /* fw400 */
+    margin: 10px 5;
+    /* 完成形を見ながら装飾は適宜設定 */
+}
+
+main section{
+    background-color: #fff;
+    /* bgc - パララックスのレイヤ下にある画像を透過させないため */
+}
+
+main .container{
+    padding:50px 10px 140px;
+    /* 各containerのブロックに内側の余白（p50-10-140程度）を設定 */
+    max-width: 1024px;
+    /* ma1024 */
+    margin: 0 auto;
+    /* m0-a */
+}
+
+
+/*-----------------------------------------
+    content message
+------------------------------------------*/
+ .message{
+    text-align: center;
+    /* テキスト中央揃い */
+    margin-bottom: 300px;
+    /* パララックス表示のためのmb300 */
+}
+
+.message h2{
+    font-size: 24px;
+    /* フォントサイズ、24pxほどに設定 */
+    padding-bottom: 60px;
+    /* 見出しの余白 -> pb60 */
+}
+.message h2 br.sp{
+    display: none;
+    /* pcの場合消す dn */
+}
+
+
+.message p{
+    line-height: 2.2;
+    /* lh2.2 */
+    /* 行間設定、適宜　一般的には、1.5前後〜2前後での行間設定がよしとされる */
+    letter-spacing: 0.07em;
+    /* ls -> letter-spacing */
+    font-weight: 400;
+    /* fw400 */
+}
+
+.message::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img2/bg_img.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+
+/*-----------------------------------------
+    .product setting
+------------------------------------------*/
+
+h4{
+    margin: 10px 10px;
+}
+
+.product ul{
+    display: grid;
+    /* dg -> display: grid */    
+    grid-template-columns: repeat(4,1fr);
+    /* gtc -> grid-template-columns:repeat() */    
+    gap: 80px 15px;
+    /* gapの設定 g80-15 -> gap:80px 15px  */
+}
+
+
+.product li .photo{
+    aspect-ratio: 4/3;
+    /* asr */
+    margin-bottom: 8px;
+    /* mb8 */
+    /* aspect-ratioの設定 4/3ほど */
+}
+
+.product li .photo img{
+    object-fit: cover;
+    /* ob - cover */
+    width: 100%;
+    /* w100p */
+    height: 100%;
+    /* h100p */
+    /* object-fitの設定 */
+}
+
+.product li .txt{
+    letter-spacing: 0.07em;
+    line-height: 1.8;
+    /* 行間、文字間の設定 lh1.8 ls0.07emほど */
+    margin: 10px 10px;
+}
+
+/*-----------------------------------------
+    fontawesome トップに戻る - setting   
+-----------------------------------------*/
+.to_top{
+    position: fixed;
+    right: 10%;
+    bottom: 10%;
+    display: block;
+    width: 55px;
+    height: 50px;
+    background-color: #555;
+    
+    /* 最初は表示しないようにして、スクロールがある距離達したならjQueryで表示させる */
+    display: none;
+
+}
+
+.to_top a{
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    font-size: 26px;
+    color: #fff;
+
+}
+
+/*-----------------------------------------
+    footer setting
+------------------------------------------*/
+
+footer{
+    background-color: #333;
+}
+
+.footer_inner{
+    max-width:1024px;
+    /* レスポンシブ対応踏まえて  ma1024 -> max-width:1024px; 1024px以下は可変 */
+    padding: 0 20px;
+    /* 左右に余白 p0-20 */
+    margin: 0 auto;
+    /* 幅指定ブロックの中央揃い m0-a */    
+}
+.footer_inner p{
+    text-align: right;
+    padding: 70px 0;
+}
+.footer_inner small{
+    color: #fff;
+}
+
+
+
+
+@media (width <= 768px){
+
+/* ---------------------------------------
+
+  pc側で設定されている値を変更、または初期値に戻す
+  ヨコ並びの設定を初期値に display:flex -> display:block;
+  幅指定されている要素  width:○○px または、width:○○% を初期値に戻す -> width:100% または、 width:auto;
+  pc側と重複しているものは不必要 -> 削除
+  あとは、微調整 -> スマホ用レイアウトに必要なCSSを追加等
+
+---------------------------------------- */
+
+/* ------------------------------
+burger-button
+--------------------------------*/
+
+    .burger{
+        position: fixed;/* position:fixed */
+        top: 15px;
+        right: 20px;
+        width: 60px;
+        height: 50px;
+        /* border: 1px solid #000; */
+        background-color: #fff;
+        cursor: pointer;
+        z-index: 100;
+        /* top,left,width,height,border等は好きな位置、大きさ、枠線に設定。 */
+        /* 今回は入れていないが、背景色も必要になるはず。 */
+        /* z100の100の数字は適当で、今後後からposition系の要素の必ずレイヤー上位にするため */
+    }
+
+    .burger span{
+        position: absolute;
+        width: 80%;
+        height: 4px;
+        background-color:#333;
+        border-radius: 30px;
+        inset: 0;
+        margin: auto;
+
+        transition: 0.2s;
+
+        /* 30行 〜 32行 spanの width,heightは、このくらいが良いが調整は好みで、背景色も同様 */
+        /* 38行 〜 39行  inset:0 margin:autoで、.burger内のspan3本が、水平・垂直中央 */
+        /* transitionは、アニメーションの時間設定なので、好みで調整可能 */
+    }
+
+
+    .burger span:nth-child(1){
+        top: -40%;
+    }
+    .burger span:nth-child(3){
+        top: 40%;
+        transition-delay: 0.1s;
+    }
+    /* spanの1番と、3番目の位置設定。調整可能 nth-childでも設定可能 */
+
+
+    .burger.cross span:nth-child(1){
+        top: 0;
+        transform: rotate(40deg);
+    }
+    .burger.cross span:nth-child(2){
+        transform: rotate(40deg);
+    }
+    .burger.cross span:nth-child(3){
+        top: 0;
+        transform: rotate(-40deg);
+    }
+
+/*-----------------------------------------
+    header responsive setting
+------------------------------------------*/   
+    header{
+        z-index: 1;
+    }
+    header h1{
+        width: 220px;
+        /* 今回はh1で囲んでいる画像の拡張子がsvgなので、親枠の幅を設定しないと枠のある幅まで広がるので幅を指定 -> 220に変更 */
+
+    }
+
+
+
+/* ------------------------------
+    nav responsive
+--------------------------------*/
+
+    nav{
+        position: fixed;
+        /* navの固定 */
+        top: 100px;
+        /* t100は、header_innerの高さ設定だけ隠さないよう100pxずらす */
+        left: 100%;
+        /* t0 l100p -> t0 r-100pでも良い */
+        width: 100%;
+        /* w100pはpC側のCSSでも書いているので省略可 */
+        height: 100%;
+        /* w100p h100p  */
+        padding-top: 30px;
+        /* 微調整 -> pt30 */
+        transition: 0.2s;
+        /* アニメーション時間設定 */
+        background-color: rgba(51, 51, 51, 0.7);
+        /* z-index: 90; */
+        /* navも今後後からposition系の要素の必ずレイヤー上位にするため */
+        /* ただし、burgerよりはレイヤー上位にならないよう設置 */
+    }
+
+    nav.drawer{
+        left: 0;
+        /* l0 -> navにクラスdrawerがついた時の動作 */
+    }
+    nav ul{
+        display: block;
+        /* flexboxを無効 */
+    }
+    nav ul a{
+        padding: 30px 0;
+        /* 微調整 */
+        text-align: center;
+        color: #fff;
+    }
+
+
+
+/*-----------------------------------------
+    main_image - responsive_setting   
+-----------------------------------------*/
+    .main_image ul{
+        display: grid;
+        /* dg -> display: grid */
+        grid-template-columns: repeat(2,1fr);
+        /* gtc -> grid-template-columns:repeat() */
+        gap: 10px;
+        /* g10 -> gap:10px */
+        grid-auto-rows: 120px;
+        /* gar180 -> grid-auto-rows: 180px  */
+
+    }
+
+/*-----------------------------------------
+    message - responsive_setting   
+-----------------------------------------*/
+
+    .message p{
+        text-align: left;
+        /* 文字整列の初期設定 -> text-align: left; */
+    }
+
+    .message p br.pc{
+        display: none;
+        /* スマホ側で、クラスpcのbrを非表示  -> display: none; */
+    }
+
+    .message h2{
+        font-size: 20px;
+        /* フォントサイズ、24pxほどに設定 */
+        line-height: 1.7;
+        /* lh1.7 微調整 */
+    }
+    
+    .message h2 br.sp{
+        display: block;
+        /* pcの場合消すが、spの場合は表示 */
+
+    }
+
+/*-----------------------------------------
+    .product reponsive setting
+------------------------------------------*/
+
+    .product ul{ 
+        grid-template-columns: repeat(2,1fr);
+        /*4カラムを2カラムに変更 */    
+    }
+
+
+}/* media query end */
