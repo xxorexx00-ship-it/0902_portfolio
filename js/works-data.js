@@ -242,7 +242,7 @@ CSSの clip-path を活用し、各パネルのカードを斜めにカットし
 【意識したユーザー体験（UX）】
 情報の一貫性と没入感
 ヒーローヘッダーから導入、横スクロールの各スポット、そしてラストの結びまで、すべてのセクションでトーン＆マナー（黒と上質な光、洗練された写真表現）を徹底。ノイズを削ぎ落とし、川越の街を巡る特別な旅のストーリーに深く浸れる構成に仕上げています。`,
-  thumbnail: 'img/hero.webp',
+  thumbnail: 'images/works/kawagoe.png',
   previewUrl: '../../../works/web-design/scrolltrigger/index.html',
   localReady: false,
 },
