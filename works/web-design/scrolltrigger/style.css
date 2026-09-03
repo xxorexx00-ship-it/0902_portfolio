@@ -20,7 +20,7 @@ body {
 }
 
 /* ==========================================================
-   ヘッダー・上下セクション（背景画像レイヤー対応）
+   ヘッダー・上下セクション（オーバーレイなし・大文字デザイン）
    ========================================================== */
 .hero-header, .first-section, .last-section {
     height: 100vh;
@@ -33,103 +33,92 @@ body {
     overflow: hidden;
 }
 
-/* ヒーローヘッダーの背景とオーバーレイ */
+/* 各セクションの背景画像（そのままクリアに表示） */
 .hero-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('img/hero.webp'); /* ★ヒーロー画像のパス */
+    background-image: url('img/hero.webp');
     background-size: cover;
     background-position: center;
     z-index: 1;
 }
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(12, 12, 12, 0.55);
-    z-index: 2;
-}
-.hero-header .header-content {
-    position: relative;
-    z-index: 3;
-}
 
-/* ファーストセクションの背景とオーバーレイ */
 .first-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('img/First\ Section.webp'); /* ★導入セクション画像のパス */
+    background-image: url('img/first.webp');
     background-size: cover;
     background-position: center;
     z-index: 1;
 }
-.first-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(12, 12, 12, 0.6);
-    z-index: 2;
-}
-.first-section .container {
-    position: relative;
-    z-index: 3;
-}
 
-/* ラストセクションの背景とオーバーレイ */
 .last-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('img/Last\ Section.webp'); /* ★ラストセクション画像のパス */
+    background-image: url('img/last.webp');
     background-size: cover;
     background-position: center;
     z-index: 1;
 }
-.last-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(12, 12, 12, 0.6);
-    z-index: 2;
-}
+
+/* 
+  ※ .hero-overlay, .first-overlay, .last-overlay のブロックは
+     不要になるため、CSSから削除してOKです！
+*/
+
+/* テキストを前面に配置 */
+.hero-header .header-content,
+.first-section .container,
 .last-section .container {
     position: relative;
-    z-index: 3;
+    z-index: 2;
+    /* 写真の上でも文字が埋もれないよう、微かに影（ドロップシャドウ）を入れる */
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* テキスト共通スタイル */
+/* サブタイトルをさらにスタイリッシュに */
 .hero-header .sub-title {
     display: block;
-    font-size: 0.85rem;
-    letter-spacing: 0.3em;
-    color: #8c857b;
-    margin-bottom: 15px;
+    font-size: 0.9rem;
+    letter-spacing: 0.4em;
+    color: #e5e5e0;
+    margin-bottom: 20px;
 }
 
+/* ヒーロータイトルの大径化・太字化 */
 .hero-header h1 {
-    font-size: 3rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    margin-bottom: 15px;
-    color: #f4f4f0;
+    font-size: 3.8rem; /* 少し大きく */
+    font-weight: 500;  /* 気持ち太く */
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+    color: #ffffff;
+    line-height: 1.3;
 }
 
 .hero-header p {
-    color: #a39e93;
-    font-size: 1.1rem;
+    color: #f0ede6;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
 }
 
+/* ファースト・ラストの見出し（h2）の大径化・太字化 */
 .container {
-    max-width: 700px;
+    max-width: 800px; /* 少し広げてダイナミックに見せる */
 }
 
 .container h2 {
-    font-size: 2.2rem;
-    font-weight: 400;
-    margin-bottom: 25px;
-    letter-spacing: 0.03em;
-    color: #f4f4f0;
+    font-size: 2.8rem; /* 大幅にサイズアップ */
+    font-weight: 500;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1.35;
 }
 
 .container p {
-    color: #b0aba0;
-    font-size: 1.1rem;
+    color: #f0ede6;
+    font-size: 1.2rem;
+    letter-spacing: 0.03em;
 }
 
 /* ==========================================================
