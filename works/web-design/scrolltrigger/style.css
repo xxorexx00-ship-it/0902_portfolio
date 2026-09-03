@@ -1,0 +1,261 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
+
+body {
+    background-color: #0c0c0c;
+    color: #e5e5e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* ==========================================================
+   ヘッダー・上下セクション（背景画像レイヤー対応）
+   ========================================================== */
+.hero-header, .first-section, .last-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ヒーローヘッダーの背景とオーバーレイ */
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('img/hero.webp'); /* ★ヒーロー画像のパス */
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(12, 12, 12, 0.55);
+    z-index: 2;
+}
+.hero-header .header-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* ファーストセクションの背景とオーバーレイ */
+.first-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('img/First\ Section.webp'); /* ★導入セクション画像のパス */
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+.first-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(12, 12, 12, 0.6);
+    z-index: 2;
+}
+.first-section .container {
+    position: relative;
+    z-index: 3;
+}
+
+/* ラストセクションの背景とオーバーレイ */
+.last-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('img/Last\ Section.webp'); /* ★ラストセクション画像のパス */
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+.last-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(12, 12, 12, 0.6);
+    z-index: 2;
+}
+.last-section .container {
+    position: relative;
+    z-index: 3;
+}
+
+/* テキスト共通スタイル */
+.hero-header .sub-title {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: #8c857b;
+    margin-bottom: 15px;
+}
+
+.hero-header h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 15px;
+    color: #f4f4f0;
+}
+
+.hero-header p {
+    color: #a39e93;
+    font-size: 1.1rem;
+}
+
+.container {
+    max-width: 700px;
+}
+
+.container h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 25px;
+    letter-spacing: 0.03em;
+    color: #f4f4f0;
+}
+
+.container p {
+    color: #b0aba0;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================
+   横スクロールセクション
+   ========================================================== */
+.horizontal-section {
+    overflow: hidden;
+    background-color: #f6f4f4;
+}
+
+.horizontal-container {
+    height: 100vh;
+    width: fit-content;
+    display: flex;
+    gap: 4vw;
+    padding: 0 4vw;
+    align-items: center;
+}
+
+/* 各パネル：背景に写真を大きく配置 */
+.panel {
+    height: 90vh;
+    width: 95vw;
+    max-width: 1300px;
+    flex-shrink: 0;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* 各パネルの背景画像指定 */
+.panel-01 { background-image: url('img/panel1.webp'); }
+.panel-02 { background-image: url('img/panel2.webp'); }
+.panel-03 { background-image: url('img/panel3.webp'); }
+.panel-04 { background-image: url('img/panel4.webp'); }
+.panel-05 { background-image: url('img/panel5.webp'); }
+
+/* クリップパスで斜めに切り抜かれる「黒い背景の図形」 */
+.panel-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 38%;
+    height: 100%;
+    background-color: rgba(1, 1, 1, 0.53);
+    z-index: 2;
+}
+
+/* パネルごとのクリップパス形状 */
+.panel-01 .panel-shape { clip-path: polygon(5% 25%, 75% 25%, 80% 75%, 10% 75%); }
+.panel-02 .panel-shape { clip-path: polygon(0 20%, 100% 20%, 82% 80%, 0 80%); }
+.panel-03 .panel-shape { clip-path: polygon(15% 25%, 80% 25%, 70% 75%, 5% 75%); }
+.panel-04 .panel-shape { clip-path: polygon(10% 25%, 80% 30%, 75% 80%, 5% 75%); }
+.panel-05 .panel-shape { clip-path: polygon(0% 10%, 75% 10%, 85% 90%, 10% 90%); }
+
+/* 安全なテキスト配置エリア */
+.panel-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 32%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 40px 50px 50px;
+    z-index: 3;
+}
+
+.panel-number {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: #e7e5e3;
+    margin-bottom: 15px;
+}
+
+.panel-content h3 {
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+    color: #f4f4f0;
+    line-height: 1.4;
+}
+
+.panel-content p {
+    font-size: 0.95rem;
+    color: #fafafa;
+    line-height: 1.7;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 50px;
+    background-color: #0c0c0c;
+    color: #736e65;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1024px) {
+    .panel {
+        height: 75vh;
+        width: 85vw;
+    }
+    .panel-shape {
+        width: 100%;
+        height: 50%;
+        clip-path: none !important;
+    }
+    .panel-content {
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        padding: 35px 25px;
+    }
+    .panel-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+    .hero-header h1 {
+        font-size: 2.2rem;
+    }
+}
