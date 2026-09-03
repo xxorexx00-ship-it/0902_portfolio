@@ -2232,12 +2232,30 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .polaroid-scroll {
   display: flex;
   gap: clamp(1.25rem, 4vw, 2rem);
-  overflow-x: auto;
+  overflow-x: hidden; /* auto → hidden */
   padding: 1rem var(--container-pad) 2rem;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  width: fit-content;
+  animation: polaroid-scroll-loop 30s linear infinite;
 }
 .polaroid-scroll::-webkit-scrollbar { display: none; }
+
+.polaroid-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes polaroid-scroll-loop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .polaroid-scroll {
+    animation: none;
+    overflow-x: auto;
+  }
+}
 
 .polaroid-card {
   flex: 0 0 auto;
@@ -2269,6 +2287,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: block;
 }
 
+.polaroid-card__caption {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  font-family: var(--font-jp);
+  text-align: center;
+}
 .polaroid-card__caption {
   font-size: var(--text-xs);
   color: var(--color-text-secondary);
