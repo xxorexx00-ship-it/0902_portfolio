@@ -231,19 +231,31 @@ footer {
     }
     .panel-shape {
         width: 100%;
-        height: 50%;
+        height: 35%;
         clip-path: none !important;
+        background-color: #26201a90;
     }
+
+    .panel-number{
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
     .panel-content {
         width: 100%;
-        height: 50%;
-        bottom: 0;
-        padding: 35px 25px;
+        height: 35%;
+        bottom: 8px;
+        padding: 1px 1px;
     }
     .panel-content h3 {
-        font-size: 1.4rem;
-        margin-bottom: 12px;
+        font-size: 1.0rem;
+        margin-bottom: 8px;
     }
+
+     .panel-content p {
+        font-size: 0.8rem;
+    }
+
     .hero-header h1 {
         font-size: 2.2rem;
     }
