@@ -22,17 +22,6 @@ const WORKS = [
   },
 
   {
-    id: 'biz-director',
-    title: 'BizDirector AI',
-    categories: ['ai-tool', 'python'],
-    categoryLabel: 'AI Tool / Python',
-    tags: ['Python', 'Streamlit', 'Gemini API'],
-    description: '業務改善・人材評価・新人教育の3軸でCSVを分析し、AIがアドバイスを出すWebアプリ。キャラクター選択UIやエラーハンドリングも実装済み。',
-    thumbnail: 'images/works/biz-director.svg',
-    previewUrl: '#',
-  },
-
-  {
     id: 'pig-project',
     title: 'pig-project',
     categories: ['ai-tool', 'python'],
@@ -41,6 +30,28 @@ const WORKS = [
     description: '一次面接で伺った企業の課題に対し、動作するプロトタイプを制作・検証。二次面接で「すでに仕組みが存在する」と判明した点も含め、コスト削減と浮いた時間の活用に関する思考プロセスを整理。',
     thumbnail: 'pig_project/img/work02.webp',
     previewUrl: 'pig_project/index.html',
+  },
+
+  {
+    id: 'chrono-links',
+    title: 'CHRONO LINKS',
+    categories: ['ai-tool', 'web-design'],
+    categoryLabel: 'CS Tool / Web Design',
+    tags: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'Chart.js', 'Python'],
+    description: '高級時計の問い合わせ対応が「答えて終わり」になりがちな課題に着目し、相場・為替の変化を次の相談につなげる自然なきっかけとして使うCS支援プロトタイプを設計・実装。相場ロジックはPythonでの算出を想定し、LP上ではjQuery連動のダッシュボードで実際の挙動を再現。',
+    thumbnail: 'images/works/work-chrono.webp',
+    previewUrl: 'chrono_links/chrono-links.html',
+  },
+
+  {
+    id: 'biz-director',
+    title: 'BizDirector AI',
+    categories: ['ai-tool', 'python'],
+    categoryLabel: 'AI Tool / Python',
+    tags: ['Python', 'Streamlit', 'Gemini API'],
+    description: '業務改善・人材評価・新人教育の3軸でCSVを分析し、AIがアドバイスを出すWebアプリ。キャラクター選択UIやエラーハンドリングも実装済み。',
+    thumbnail: 'images/works/biz-director.svg',
+    previewUrl: '#',
   },
 
   {
@@ -246,6 +257,7 @@ CSSの clip-path を活用し、各パネルのカードを斜めにカットし
   previewUrl: '../../../works/web-design/scrolltrigger/index.html',
   localReady: false,
 },
+
 
   {
     id: 'art-gallery',
