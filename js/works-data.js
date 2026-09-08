@@ -40,7 +40,7 @@ const WORKS = [
     tags: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'Chart.js', 'Python'],
     description: '高級時計の問い合わせ対応が「答えて終わり」になりがちな課題に着目し、相場・為替の変化を次の相談につなげる自然なきっかけとして使うCS支援プロトタイプを設計・実装。相場ロジックはPythonでの算出を想定し、LP上ではjQuery連動のダッシュボードで実際の挙動を再現。',
     thumbnail: 'images/works/work-chrono.webp',
-    previewUrl: 'chrono_links/chrono-links.html',
+    previewUrl: 'chrono_links/index.html',
   },
 
   {
@@ -50,7 +50,7 @@ const WORKS = [
     categoryLabel: 'AI Tool / Python',
     tags: ['Python', 'Streamlit', 'Gemini API'],
     description: '業務改善・人材評価・新人教育の3軸でCSVを分析し、AIがアドバイスを出すWebアプリ。キャラクター選択UIやエラーハンドリングも実装済み。',
-    thumbnail: 'images/works/biz-director.svg',
+    thumbnail: '',
     previewUrl: '#',
   },
 

@@ -117,10 +117,9 @@
     .hero-description { font-size: 1rem; color: var(--ink-soft); max-width: 460px; margin-bottom: 2.4rem; line-height: 1.95; }
     .hero-actions { display: flex; gap: 1rem; }
 
-    .hero-dial { display: flex; align-items: center; justify-content: center; }
-    .hero-dial svg { width: 100%; max-width: 380px; height: auto; }
-
-    .hero-strip { margin-top: 5rem; height: 260px; border-top: 1px solid var(--line); }
+    .hero-visual { height: 460px; border-radius: 4px; overflow: hidden; }
+    .hero-visual img { filter: none; }
+    .hero-visual::after { display: none; }
 
     /* ==========================================
        5. コンセプト（課題の説明）
@@ -234,7 +233,7 @@
        ========================================== */
     @media (max-width: 992px) {
       .hero-grid, .concept-grid, .scenario-grid { grid-template-columns: 1fr; }
-      .hero-dial { order: -1; max-width: 220px; margin: 0 auto 2rem; }
+      .hero-visual { order: -1; height: 280px; }
       .app-body { grid-template-columns: 1fr; }
       .app-sidebar { border-right: none; border-bottom: 1px solid var(--line); }
       .metrics-row { grid-template-columns: repeat(2, 1fr); }
@@ -279,35 +278,12 @@
           </div>
         </div>
 
-        <div class="hero-dial">
-          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="200" cy="200" r="185" fill="none" stroke="#DCD3BF" stroke-width="1.5"/>
-            <circle cx="200" cy="200" r="150" fill="none" stroke="#96723F" stroke-width="1"/>
-            <line x1="200" y1="50" x2="200" y2="28" stroke="#21242A" stroke-width="2"/>
-            <line x1="275" y1="70.1" x2="286" y2="51.02" stroke="#96723F" stroke-width="1.2"/>
-            <line x1="329.9" y1="125" x2="348.98" y2="114" stroke="#96723F" stroke-width="1.2"/>
-            <line x1="350" y1="200" x2="372" y2="200" stroke="#21242A" stroke-width="2"/>
-            <line x1="329.9" y1="275" x2="348.98" y2="286" stroke="#96723F" stroke-width="1.2"/>
-            <line x1="275" y1="329.9" x2="286" y2="348.98" stroke="#96723F" stroke-width="1.2"/>
-            <line x1="200" y1="350" x2="200" y2="372" stroke="#21242A" stroke-width="2"/>
-            <line x1="125" y1="329.9" x2="114" y2="348.98" stroke="#96723F" stroke-width="1.2"/>
-            <line x1="70.1" y1="275" x2="51.02" y2="286" stroke="#96723F" stroke-width="1.2"/>
-            <line x1="50" y1="200" x2="28" y2="200" stroke="#21242A" stroke-width="2"/>
-            <line x1="70.1" y1="125" x2="51.02" y2="114" stroke="#96723F" stroke-width="1.2"/>
-            <line x1="125" y1="70.1" x2="114" y2="51.02" stroke="#96723F" stroke-width="1.2"/>
-            <rect x="322" y="188" width="16" height="24" fill="none" stroke="#8A8E94" stroke-width="1"/>
-            <line x1="200" y1="200" x2="200" y2="105" stroke="#21242A" stroke-width="3" stroke-linecap="round"/>
-            <line x1="200" y1="200" x2="258" y2="150" stroke="#21242A" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="200" cy="200" r="6" fill="#96723F"/>
-          </svg>
+        <div class="toned-img hero-visual">
+          <img
+            src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1000&q=80"
+            alt="高級腕時計のクローズアップ"
+          >
         </div>
-      </div>
-
-      <div class="hero-strip toned-img container">
-        <img
-          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=80"
-          alt="腕時計を並べたコンセプトビジュアル"
-        >
       </div>
     </div>
   </section>
@@ -316,7 +292,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-kicker">問い合わせという入口</span>
-        <h2 class="section-title">問い合わせが来た時点で、次に繋がるきっかけはもうあります。</h2>
+        <h2 class="section-title">お問い合わせには、すでに「次の接点」があります。</h2>
         <p class="section-lead">新しいお客様を探しに行く前に、すでに関心を持って連絡してくれた人がいます。</p>
       </div>
 
@@ -359,7 +335,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-kicker">実際の画面</span>
-        <h2 class="section-title">考えた末に、こんなアプリを作りました。</h2>
+        <h2 class="section-title">だから、こんなアプリにしました。</h2>
         <p class="section-lead">海外の相場と為替の動きから、国内価格とのズレをPythonで計算して、ひと目で分かるようにしています。</p>
       </div>
 
@@ -427,6 +403,10 @@
           </div>
         </div>
       </div>
+
+      <p style="margin-top:1.8rem; font-size:0.85rem; color:var(--ink-soft); max-width:640px;">
+        画面が出すのは「確認したほうがよさそうなモデル」の候補までです。ご案内するかどうかは担当者が内容を見て判断し、必要なときだけメールテンプレートを使います。大きなシステムを新しく入れる必要はなく、今の業務に小さな確認作業を一つ足すだけで始められます。
+      </p>
     </div>
   </section>
 
@@ -434,8 +414,8 @@
     <div class="container">
       <div class="section-header">
         <span class="section-kicker">お客様への伝え方</span>
-        <h2 class="section-title">値下がりも、信頼をつくるきっかけにできる。<br>知識の差を、案内の差にしない。</h2>
-        <p class="section-lead">事実だけを丁寧に伝えること。誰が対応しても同じ水準の案内ができること。この二つを大事にしています。</p>
+        <h2 class="section-title">相場が動いたとき、先にお伝えできる。<br>知識の差を、案内の差にしない。</h2>
+        <p class="section-lead">事実だけを丁寧に伝えること。専門知識に差があっても、案内の水準を揃えられること。この二つを大事にしています。</p>
       </div>
 
       <div class="scenario-grid">
@@ -514,7 +494,7 @@
             <div class="cycle-num">4</div>
           </div>
           <div class="cycle-title">売却・買い替え</div>
-          <div class="cycle-desc">値下がり前の売却や、値上がりが見込める品への相談につながります。</div>
+          <div class="cycle-desc">今のうちに手放すご相談や、気になっている別のモデルへの買い替えにつながります。</div>
         </div>
 
         <div class="cycle-node">
@@ -546,7 +526,7 @@
           </div>
           <div class="maker-item">
             <span>不安の正体を考える</span>
-            <p>踏み込んだ提案がしにくいのは、知識に自信が持てないからだと考えました。相場のデータとテンプレートがあれば、誰が対応しても同じ水準の案内ができます。</p>
+            <p>踏み込んだ提案がしにくいのは、知識に自信が持てないからだと考えました。相場のデータとテンプレートがあれば、担当者ごとの知識差があっても、一定水準の案内ができます。</p>
           </div>
           <div class="maker-item">
             <span>成果につなげる</span>
@@ -579,10 +559,10 @@
         },
         'omega-31030425001001': {
           title: 'Omega Speedmaster Professional (Ref.310.30.42.50.01.001)',
-          status: '海外の相場が上がっています。国内価格の見直しや、買取を強めるご案内に向いているタイミングです。',
+          status: '海外の相場が上がっています。国内価格の見直しや、買取のご案内がしやすいタイミングです。',
           usd: '$6,800', calcJpy: '¥1,037,000', japanJpy: '¥980,000', diff: '+¥57,000',
           diffColor: 'var(--rise)',
-          logic: '海外の実勢価格が250ドルほど上がりました。円に換算した金額が国内価格を上回っているので、国内価格を見直す、もしくは買取を強めるご案内がしやすい状態です。',
+          logic: '海外の実勢価格が250ドルほど上がりました。円に換算した金額が国内価格を上回っているので、国内価格を見直す、もしくは買取のご案内がしやすい状態です。',
           chartData: [92, 93, 94, 96, 98, 103]
         },
         'patek-5711': {
